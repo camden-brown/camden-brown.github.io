@@ -1,7 +1,7 @@
 ---
 title: Portfolio
 icon: fas fa-briefcase
-order: 1
+order: 2
 ---
 
 <link rel="stylesheet" href="/assets/css/timeline-snippet.css">

@@ -1,3 +1,22 @@
+/* Override default link underline for timeline company links */
+.timeline ul:not(ul ul) > li > a:not(:hover) {
+  border-bottom: none !important;
+}
+/* Timeline company links styling */
+.timeline ul:not(ul ul) > li > a {
+  color: var(--background-modifier-success);
+  text-decoration: underline;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  border: none;
+  box-shadow: none;
+  transition: color 0.2s;
+}
+.timeline ul:not(ul ul) > li > a:hover {
+  color: var(--interactive-success);
+}
 .timeline.spaced-lines ul:not(ul ul) > li:nth-child(3n) p {
   line-height: 1.7rem;
 }
@@ -86,17 +105,17 @@
 .timeline ul:not(ul ul) > li:nth-child(3n + 2) {
   grid-column: 3;
 }
+/* Remove font and padding from anchor tags, keep for other elements */
 .timeline ul:not(ul ul) > li:nth-child(3n + 1),
 .timeline ul:not(ul ul) > li:nth-child(3n + 2) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.4em 0;
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: bold;
 }
-.timeline ul:not(ul ul) > li:nth-child(3n + 1) > *,
-.timeline ul:not(ul ul) > li:nth-child(3n + 2) > * {
+.timeline ul:not(ul ul) > li:nth-child(3n + 1) > *:not(a),
+.timeline ul:not(ul ul) > li:nth-child(3n + 2) > *:not(a) {
   font-size: 1.3rem;
   font-weight: bold;
 }

@@ -50,7 +50,7 @@ order: 2
 
 ## Highlights
 <ul class="achievements">
-  <li>Led, planned, and built SiriusXM’s web player re-architecture (AngularJS → Angular) with an 8-engineer team, delivering a modern, high-performance live audio & video streaming experience.</li>
+  <li>Led an 8-engineer team to re-architect SiriusXM’s web player (AngularJS → Angular), delivering a modern, high-performance live audio & video streaming experience.</li>
   <li>Sole architect & implementer of Sympliact’s Angular platform (greenfield → production): 500 automated patient onboardings/week, 200+ staff enabled, ~80% test coverage and rigorous code standards sustaining high feature velocity while part‑time.</li>
   <li>Engineered Hexa Containment’s shipment & order management platform (Rails + Angular), powering $1M+ shipment & inventory operations and replacing phone-based ordering with a self‑serve portal transacting $100K+ in supply orders.</li>
 </ul>
@@ -146,11 +146,12 @@ order: 2
     </li>
 
     <li><a href="https://metova.com" target="_blank" rel="noopener">Metova, Inc.</a> <br/> Jan 2017 - Jun 2018</li>
-    <li>Lead Frontend Engineer</li>
+    <li>Lead Frontend Engineer/li>
     <li>
       <ul class="achievements">
-        <li>Led rebuild of SiriusXM web player in Angular, improving performance and user experience (live audio + video streaming).</li>
-        <li>Delivered streaming features that expanded platform content delivery capabilities.</li>
+        <li>Led an 8-engineer team to re-architect SiriusXM’s web player (AngularJS → Angular), delivering a modern, high-performance live audio & video streaming experience.</li>
+        <li>Boosted code coverage from 0% to 80% on legacy platforms (Jasmine, Karma), reducing sprint bug rates from over 70% to under 20%.</li>
+        <li>Utilized principles from <em>The Phoenix Project</em> to create the highest velocity team in the organization.</li>
       </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Angular</div>
@@ -163,7 +164,7 @@ order: 2
     <li>Full Stack Engineer</li>
     <li>
       <ul class="achievements">
-        <li>Utilized Ruby on Rails to</li>
+        <li>Designed and built an e-reader platform with Ruby on Rails, enabling authors to exchange book previews for social interaction.</li>
       </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Ruby on Rails</div>
@@ -175,10 +176,6 @@ order: 2
     <li><a href="https://metova.com" target="_blank" rel="noopener">Metova, Inc.</a> <br/> May 2015 - Nov 2015</li>
     <li>Full Stack Engineer Intern</li>
     <li>
-      <ul class="achievements">
-        <li>Contributed to Rails and JavaScript feature delivery, testing, and debugging cycles.</li>
-        <li>Assisted in documentation and quality improvements for client-facing releases.</li>
-      </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Ruby on Rails</div>
         <div class="skill-badge">Angular</div>

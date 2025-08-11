@@ -23,7 +23,7 @@ order: 2
     <div class="skills-group-title">Backend & DevOps</div>
     <div class="skills-panel">
       <div class="skill-badge">Ruby on Rails</div>
-      <div class="skill-badge">Node.js</div>
+      <div class="skill-badge">Node.js</div>  
       <div class="skill-badge">AWS</div>
       <div class="skill-badge">GCP</div>
       <div class="skill-badge">Docker</div>
@@ -50,7 +50,7 @@ order: 2
 
 ## Highlights
 <ul class="achievements">
-  <li>Directed an 8‑engineer re-architecture of SiriusXM’s web player (AngularJS → Angular), delivering a modern, high-performance live audio & video streaming experience.</li>
+  <li>Led, planned, and built SiriusXM’s web player re-architecture (AngularJS → Angular) with an 8-engineer team, delivering a modern, high-performance live audio & video streaming experience.</li>
   <li>Sole architect & implementer of Sympliact’s Angular platform (greenfield → production): 500 automated patient onboardings/week, 200+ staff enabled, ~80% test coverage and rigorous code standards sustaining high feature velocity while part‑time.</li>
   <li>Engineered Hexa Containment’s shipment & order management platform (Rails + Angular), powering $1M+ shipment & inventory operations and replacing phone-based ordering with a self‑serve portal transacting $100K+ in supply orders.</li>
 </ul>

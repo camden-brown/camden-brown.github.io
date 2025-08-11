@@ -63,6 +63,7 @@ order: 2
       <ul class="achievements">
         <li>Architected and delivered end-to-end Angular Practice & Patient platforms (greenfield → production), enabling 500+ weekly patient sign-ups and 200+ active staff users.</li>
         <li>Established CI/CD (Jest, Cypress, Codecov) and quality gates, sustaining ~80% coverage and >90% feature work per sprint while accelerating a safe, low-regression release cadence.</li>
+        <li>Applied principles from <em>The Lean Startup</em>, <em>The Phoenix Project</em>, and <em>The Goal</em> to drive high-impact business decisions, enabling fast feature delivery as the sole frontend developer.</li>
       </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Angular</div>

@@ -83,9 +83,9 @@ order: 2
     <li>Staff Full-Stack Software Engineer</li>
     <li>
       <ul class="achievements">
-        <li>Delivered customer portal (Angular + Ruby on Rails) to streamline purchase order submission and improve buyer experience.</li>
-        <li>Built internal Kanban work queue tools improving operational throughput and task visibility for distributed teams.</li>
-        <li>Partnered with executives to align feature sequencing with business objectives, informing roadmap trade-offs.</li>
+        <li>Engineered shipment & order management platform (Rails + Angular), automating $1M+ in inventory operations and launching a self-serve portal that replaced manual phone orders with $100K+ in online transactions.</li>
+        <li>Launched a loyalty program feature that drove $15K+ in repeat business through the customer portal, boosting client retention and online engagement.</li>
+        <li>Built an automated AWS-powered email parser (Angular + Rails) that ingests order emails, extracts items, and generates shipping options—saving purchasers $100s–$1,000s per order.</li>
       </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Angular</div>

@@ -24,6 +24,7 @@ order: 2
     <div class="skills-panel">
       <div class="skill-badge">Ruby on Rails</div>
       <div class="skill-badge">Node.js</div>  
+      <div class="skill-badge">Golang</div>
       <div class="skill-badge">AWS</div>
       <div class="skill-badge">GCP</div>
       <div class="skill-badge">Docker</div>

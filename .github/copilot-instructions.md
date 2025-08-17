@@ -67,3 +67,47 @@ This is a Jekyll static site using the Chirpy theme, customized for technical wr
 ---
 
 If any section is unclear or missing, please provide feedback for further refinement.
+
+---
+
+## Blog Post Structure: Jekyll Chirpy Template
+
+To create a new blog post using the Chirpy theme:
+
+1. **File Location & Naming:**
+
+- Place your post in `_posts/`.
+- Use the format: `YYYY-MM-DD-title.md` (e.g., `2025-08-17-my-post.md`).
+
+2. **Front Matter:**
+
+- Start with YAML front matter. Example:
+  ```yaml
+  ---
+  title: "Your Post Title"
+  date: YYYY-MM-DD HH:MM:SS +/-TTTT
+  categories: [category1, category2]
+  tags: [tag1, tag2]
+  ---
+  ```
+- `categories` and `tags` help organize and index your post.
+
+3. **Content Formatting:**
+
+- Write content in Markdown below the front matter.
+- Use headings (`#`, `##`), lists, code blocks, and images as needed.
+- For code, use triple backticks and specify language for syntax highlighting.
+
+4. **Assets:**
+
+- Store images or files in `assets/img/` or a relevant subfolder.
+- Reference assets with relative paths (e.g., `![Alt text](/assets/img/example.png)`).
+
+5. **Best Practices:**
+
+- Keep titles concise and descriptive.
+- Use tags and categories for discoverability.
+- Preview locally with `./tools/run.sh` before publishing.
+- Follow Markdown linting and Chirpy theme conventions for consistent appearance.
+
+For advanced options (custom excerpts, math, footnotes, etc.), see the [Chirpy theme documentation](https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Posts).

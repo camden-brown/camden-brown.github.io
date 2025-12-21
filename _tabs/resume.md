@@ -92,7 +92,7 @@ order: 2
       </div>
     </li>
 
-    <li><a href="https://hexacontainment.com" target="_blank" rel="noopener">Hexa Containment</a> Apr 2022 - Present</li>
+    <li><a href="https://hexacontainment.com" target="_blank" rel="noopener">Hexa Containment</a> Apr 2022 - Nov 2025</li>
     <li>Staff Full-Stack Software Engineer</li>
     <li>
       <ul class="achievements">
@@ -102,6 +102,7 @@ order: 2
       </ul>
       <div class="job-skills skills-panel">
         <div class="skill-badge">Angular</div>
+        <div class="skill-badge">Next.js</div>
         <div class="skill-badge">TypeScript</div>
         <div class="skill-badge">Ruby on Rails</div>
         <div class="skill-badge">PostgreSQL</div>

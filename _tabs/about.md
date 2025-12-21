@@ -26,7 +26,7 @@ I’m a goal‑oriented craftsman—always raising the bar, always learning. Rig
 Away from work I keep things active and family-centered:
 
 - Skateboarding with my kids
-- Video games (recent Claire 33 clear)
+- Video games
 - Family travel: Thailand, Korea, Hawaii, US national parks
 - Strength & conditioning to stay healthy and present
 - Overlanding / camping in a 4Runner with the kids

@@ -9,9 +9,10 @@ order: 2
 ## Skills
 <div class="skills-groups">
   <div class="skills-group">
-    <div class="skills-group-title">Frontend & UI</div>
+    <div class="skills-group-title">Frontend</div>
     <div class="skills-panel">
-      <div class="skill-badge">Angular(v20)</div>
+      <div class="skill-badge">Angular</div>
+      <div class="skill-badge">Next.js/React</div>
       <div class="skill-badge">TypeScript</div>
       <div class="skill-badge">RxJS</div>
       <div class="skill-badge">NgRx</div>
@@ -20,31 +21,42 @@ order: 2
     </div>
   </div>
   <div class="skills-group">
-    <div class="skills-group-title">Backend & DevOps</div>
+    <div class="skills-group-title">Backend & API</div>
     <div class="skills-panel">
       <div class="skill-badge">Ruby on Rails</div>
       <div class="skill-badge">Node.js</div>  
       <div class="skill-badge">Golang</div>
-      <div class="skill-badge">AWS</div>
-      <div class="skill-badge">GCP</div>
-      <div class="skill-badge">Docker</div>
-      <div class="skill-badge">Redis</div>
       <div class="skill-badge">GraphQL</div>
       <div class="skill-badge">REST</div>
       <div class="skill-badge">PostgreSQL</div>
+      <div class="skill-badge">DynamoDB</div>
       <div class="skill-badge">AuthN / AuthZ</div>
       <div class="skill-badge">Stripe (Card & ACH)</div>
+      <div class="skill-badge">Retrieval-Augmented Generation</div>
+    </div>
+  </div>
+  <div class="skills-group">
+    <div class="skills-group-title">DevOps & Infrastructure</div>
+    <div class="skills-panel">
+      <div class="skill-badge">AWS Lambda</div>
+      <div class="skill-badge">EC2</div>
+      <div class="skill-badge">ElasticBeanstalk</div>
+      <div class="skill-badge">SQS</div>
+      <div class="skill-badge">Route 53</div>
+      <div class="skill-badge">Cloudwatch</div>
+      <div class="skill-badge">Terraform</div>
+      <div class="skill-badge">Docker</div>
+      <div class="skill-badge">Redis</div>
       <div class="skill-badge">Netlify</div>
       <div class="skill-badge">Sentry</div>
     </div>
   </div>
   <div class="skills-group">
-    <div class="skills-group-title">Quality & Delivery</div>
+    <div class="skills-group-title">Testing & Analytics</div>
     <div class="skills-panel">
       <div class="skill-badge">Posthog</div>
       <div class="skill-badge">Jest</div>
       <div class="skill-badge">Cypress</div>
-      <div class="skill-badge">Scrum / Agile</div>
     </div>
   </div>
 </div>

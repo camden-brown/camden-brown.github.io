@@ -1,0 +1,5 @@
+{% if post.description %}
+  {{ post.description }}
+{% else %}
+  {{ post.content | markdownify | strip_html | truncate: 200 }}
+{% endif %}

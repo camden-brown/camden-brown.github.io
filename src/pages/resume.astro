@@ -1,0 +1,93 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { roles, skills, resume, links } from '../data/portfolio';
+
+const strip = (u: string) => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const contacts = [
+  { label: resume.location, href: null },
+  { label: links.emailAddress, href: links.email },
+  { label: strip(links.github), href: links.github },
+  { label: strip(links.linkedin), href: links.linkedin },
+];
+---
+
+<Shell path="~/resume" active="resume" title="Résumé — Camden Brown">
+  <div class="resume-bar no-print">
+    <Prompt cmd="./resume --export pdf" />
+    <button id="print-resume" type="button" class="btn btn--accent print-btn">
+      &#8595; Download PDF
+    </button>
+  </div>
+
+  <article class="resume" id="resume-doc">
+    <header class="rz-head">
+      <div class="rz-head-main">
+        <h1 class="rz-name">{resume.name}</h1>
+        <div class="rz-title">{resume.title}</div>
+      </div>
+      <ul class="rz-contact">
+        {
+          contacts.map((c) => (
+            <li>
+              {c.href ? (
+                <a href={c.href}>{c.label}</a>
+              ) : (
+                <span>{c.label}</span>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </header>
+
+    <section class="rz-section">
+      <h2 class="rz-h2">Summary</h2>
+      <p class="rz-summary">{resume.summary}</p>
+    </section>
+
+    <section class="rz-section">
+      <h2 class="rz-h2">Experience</h2>
+      {
+        roles.map((r) => (
+          <div class="rz-role">
+            <div class="rz-role-head">
+              <div class="rz-role-id">
+                <span class="rz-role-title">{r.role}</span>
+                <span class="rz-role-co">{r.company}</span>
+              </div>
+              <span class="rz-role-period">{r.period}</span>
+            </div>
+            <ul class="rz-points">
+              {r.points.map((pt) => (
+                <li>{pt}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </section>
+
+    <section class="rz-section">
+      <h2 class="rz-h2">Skills</h2>
+      <div class="rz-skills">
+        {skills.map((s) => <span class="rz-skill">{s}</span>)}
+      </div>
+    </section>
+
+    <section class="rz-section">
+      <h2 class="rz-h2">Education</h2>
+      {
+        resume.education.map((e) => (
+          <div class="rz-edu">
+            <div class="rz-role-id">
+              <span class="rz-role-title">{e.school}</span>
+              <span class="rz-role-co">{e.detail}</span>
+            </div>
+            <span class="rz-role-period">{e.period}</span>
+          </div>
+        ))
+      }
+    </section>
+  </article>
+</Shell>

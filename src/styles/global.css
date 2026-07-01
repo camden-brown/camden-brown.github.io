@@ -578,11 +578,14 @@ html[data-theme='dark'] .astro-code span {
   display: inline-block;
   text-decoration: none;
   color: var(--text);
+  background: transparent;
   border: 1px solid var(--border);
   padding: 7px 13px;
   border-radius: 6px;
-  font-size: 12px;
+  font: 12px var(--mono);
+  cursor: pointer;
 }
+.btn:hover { background: var(--panelHi); }
 .btn--accent { color: var(--accent); border-color: var(--accentBorder); }
 .btn--sm { padding: 7px 12px; font-size: 11.5px; color: var(--muted); cursor: pointer; }
 .btn--sm:hover { background: var(--panelHi); }
@@ -866,6 +869,190 @@ html[data-theme='dark'] .astro-code span {
 .contact-right { color: var(--faint); font-size: 12px; text-align: right; }
 .cursor-line { margin-top: 30px; font-size: 12px; }
 
+/* ============================================================
+   Résumé page (terminal-themed on screen; see @media print below
+   for the clean white-paper export)
+   ============================================================ */
+.resume-bar {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume {
+  margin-top: 20px;
+  background: var(--panelBody);
+  border: 1px solid var(--borderSoft);
+  border-radius: 11px;
+  padding: 34px 38px;
+}
+
+.rz-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 28px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+.rz-name {
+  font-family: var(--sans);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1.2px;
+  color: var(--textHi);
+  margin: 0;
+  line-height: 1;
+}
+.rz-title { margin-top: 9px; color: var(--accent); font-size: 13.5px; }
+.rz-contact {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font: 11.5px/1.9 var(--mono);
+  color: var(--faint);
+}
+.rz-contact a { color: var(--accent); text-decoration: none; }
+.rz-contact a:hover { text-decoration: underline; }
+
+.rz-section { margin-top: 26px; }
+.rz-h2 {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid var(--borderSoft);
+}
+.rz-summary {
+  font-family: var(--sans);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 780px;
+}
+
+.rz-role { margin-bottom: 20px; }
+.rz-role:last-child { margin-bottom: 0; }
+.rz-role-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+}
+.rz-role-title { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--textHi); }
+.rz-role-co { color: var(--amber); font-size: 13px; margin-left: 9px; }
+.rz-role-period { color: var(--faint); font: 11.5px var(--mono); white-space: nowrap; }
+.rz-points {
+  margin: 9px 0 0;
+  padding-left: 18px;
+  font-family: var(--sans);
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.rz-points li { margin: 4px 0; }
+.rz-points li::marker { color: var(--accent); }
+
+.rz-skills { display: flex; gap: 7px; flex-wrap: wrap; }
+.rz-skill {
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font: 11.5px var(--mono);
+  color: var(--muted);
+}
+.rz-edu {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+}
+
+/* ---- Clean white-paper export (browser print → Save as PDF) ---- */
+@media print {
+  @page { size: letter; margin: 0.55in 0.6in; }
+  :root { color-scheme: light; }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    padding: 0 !important;
+    font-size: 11pt;
+  }
+  .titlebar,
+  .statusbar,
+  .resume-bar,
+  .no-print { display: none !important; }
+
+  .window {
+    max-width: none;
+    margin: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+  .body { padding: 0 !important; background: #fff !important; color: #111 !important; }
+
+  .resume {
+    margin: 0;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    font-family: 'Helvetica Neue', Arial, system-ui, sans-serif;
+    color: #111 !important;
+  }
+
+  .rz-head { border-bottom: 1.5px solid #222; padding-bottom: 12px; }
+  .rz-name { color: #111 !important; font-family: inherit; font-size: 24pt; letter-spacing: -0.5px; }
+  .rz-title { color: #333 !important; font-size: 11pt; margin-top: 5px; }
+  .rz-contact { color: #444 !important; font-family: inherit; font-size: 9pt; line-height: 1.6; }
+  .rz-contact a { color: #111 !important; text-decoration: none; }
+
+  .rz-section { margin-top: 16px; }
+  .rz-h2 {
+    font-family: inherit;
+    color: #111 !important;
+    font-size: 10.5pt;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 3px;
+    margin-bottom: 9px;
+  }
+  .rz-summary { color: #222 !important; font-family: inherit; font-size: 10pt; line-height: 1.5; }
+
+  .rz-role { margin-bottom: 12px; break-inside: avoid; }
+  .rz-role-title { color: #111 !important; font-family: inherit; font-size: 11pt; }
+  .rz-role-co { color: #333 !important; }
+  .rz-role-period { color: #555 !important; font-family: inherit; font-size: 9pt; }
+  .rz-points { color: #222 !important; font-family: inherit; font-size: 10pt; line-height: 1.45; }
+  .rz-points li::marker { color: #111; }
+
+  .rz-skills { gap: 5px; }
+  .rz-skill {
+    border: 1px solid #bbb;
+    color: #222 !important;
+    font-family: inherit;
+    font-size: 9pt;
+    padding: 2px 8px;
+  }
+  .rz-edu { break-inside: avoid; }
+
+  a { color: #111 !important; }
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 720px) {
   body { padding: 14px 10px 40px; }
@@ -877,6 +1064,9 @@ html[data-theme='dark'] .astro-code span {
   .contact-tracks { grid-template-columns: 1fr !important; }
   .hero-name { font-size: 40px !important; letter-spacing: -1.4px !important; }
   .writing-row { grid-template-columns: 1fr !important; gap: 6px !important; }
+  .resume { padding: 22px 20px; }
+  .rz-contact { text-align: left; }
+  .rz-name { font-size: 30px; }
 
   /* Nav can't fit on one row on phones — drop it to its own full-width
      line below the path label, wrap the links, and keep the toggle reachable. */

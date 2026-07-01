@@ -241,10 +241,18 @@ function wireGallery(): void {
   }
 }
 
+// ---- Résumé: browser print → "Save as PDF" ----
+function wireResume(): void {
+  const btn = document.getElementById('print-resume');
+  if (!btn) return;
+  btn.onclick = () => window.print();
+}
+
 /** Run on initial load and after every View Transition navigation. */
 export function initUI(): void {
   applyTheme();
   wireThemePicker();
   startFavicon();
   wireGallery();
+  wireResume();
 }

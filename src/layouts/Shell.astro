@@ -7,7 +7,7 @@ interface Props {
   /** terminal path label, e.g. "~", "~/projects", "~/projects/hexa" */
   path?: string;
   /** which nav item is active */
-  active?: 'home' | 'projects' | 'writing' | 'about' | 'experience' | 'contact';
+  active?: 'home' | 'projects' | 'writing' | 'about' | 'resume' | 'contact';
   title?: string;
   description?: string;
 }
@@ -24,7 +24,7 @@ const nav = [
   { id: 'projects', label: 'projects', href: '/projects/' },
   { id: 'writing', label: 'writing', href: '/writing/' },
   { id: 'about', label: 'about', href: '/about/' },
-  { id: 'experience', label: 'experience', href: '/experience/' },
+  { id: 'resume', label: 'resume', href: '/resume/' },
   { id: 'contact', label: 'contact', href: '/contact/' },
 ] as const;
 ---
@@ -127,7 +127,7 @@ const nav = [
       <!-- status bar -->
       <div class="statusbar">
         <span class="branch">&#9095; main</span>
-        <span>✓ 80% coverage</span>
+        <span>✓ Playwright QA</span>
         <span>Angular · TS · Rails</span>
         <span class="spacer">© 2026 Camden Brown</span>
       </div>

@@ -50,12 +50,12 @@ export const projects: Project[] = [
       "Practice PWA — appointment scheduling (FullCalendar), patient management, provider & staff administration, configurable automated notifications, and usage metrics.",
       "Patient PWA — multi-profile health records, provider connections & authorizations, secure care-thread messaging, and record search with predictive suggestions.",
       "NgRx state architecture and Angular Material across both apps, delivered as offline-capable PWAs with Auth0 auth against a Rails + GraphQL API (Postgres, Elasticsearch, Sidekiq).",
-      "Quality gates sustaining ~80% coverage — unit tests plus a mocked Playwright acceptance harness that exercises full flows with no backend required.",
+      "Quality gates built on unit and Playwright integration tests, with automated QA running the same Playwright suite in two modes — mocked (intercepted GraphQL, forged Auth0 session, no backend) for fast PR checks, and live against a real backend for full end-to-end verification.",
     ],
     metrics: [
       { n: "500+", label: "weekly patient sign-ups" },
       { n: "200+", label: "active staff users" },
-      { n: "80%", label: "sustained test coverage" },
+      { n: "Mock + Live", label: "automated Playwright QA" },
       { n: "2 PWAs", label: "practice + patient" },
     ],
     stack: [
@@ -67,6 +67,7 @@ export const projects: Project[] = [
       "GraphQL",
       "PostgreSQL",
       "Auth0",
+      "Playwright",
     ],
     shotA: "practice-scheduling.png",
     shotB: "patient-records.png",
@@ -78,7 +79,8 @@ export const projects: Project[] = [
       "NgRx (store + effects) for predictable state across both apps, with Angular Material and a custom design system for the UI.",
       "Auth0 (Authorization Code + PKCE) authentication shared across the practice and patient experiences.",
       "Rails + GraphQL backend on PostgreSQL, with Elasticsearch-powered patient search and Sidekiq background jobs.",
-      "A bespoke mocked Playwright acceptance harness — every screen exercises full flows against intercepted GraphQL with a forged Auth0 session, no backend required — behind an ~80% coverage gate.",
+      "Testing strategy combining unit tests with Playwright integration tests across both apps, driving strong coverage of the feature surface.",
+      "Automated QA on a dual-mode Playwright harness: the same specs run mocked — intercepted GraphQL plus a forged Auth0 session, no backend required — as fast PR gates, and live against a real backend for end-to-end release verification.",
       "CI/CD with semantic-release, Sentry error monitoring, and PostHog product analytics.",
     ],
     gallery: [
@@ -254,7 +256,7 @@ export const roles: Role[] = [
     points: [
       "Architected and delivered an end-to-end healthcare platform from greenfield to production, owning all frontend development.",
       "Built Angular Practice & Patient PWAs (plus the marketing site) scaling to 500+ weekly patient sign-ups and 200+ active staff users.",
-      "Established CI/CD and quality gates sustaining 80% test coverage across 90% of feature work, with a safe, low-regression release cadence.",
+      "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
       "Applied Lean Startup principles to drive rapid delivery as the sole frontend developer, shaping high-impact technical and business decisions.",
     ],
   },
@@ -308,6 +310,28 @@ export const roles: Role[] = [
     ],
   },
 ];
+
+// Résumé header + sections not derivable from roles[]/skills[].
+export interface Education {
+  school: string;
+  detail: string;
+  period: string;
+}
+
+export const resume = {
+  name: "Camden Brown",
+  title: "Founding Engineer · Full-Stack Developer",
+  location: "Cookeville, TN · Remote",
+  summary:
+    "Founding engineer and full-stack developer specializing in Angular, TypeScript, and Rails. Seven years building Sympliact's healthcare platform from an empty repo to production, alongside consulting across health-tech, government, and B2B SaaS. I care about clean architecture, automated quality gates, and shipping fast without breaking trust.",
+  education: [
+    {
+      school: "Tennessee Technological University",
+      detail: "Computer Science",
+      period: "Cookeville, TN",
+    },
+  ] as Education[],
+};
 
 export const skills: string[] = [
   "Angular",

@@ -53,10 +53,10 @@ export const projects: Project[] = [
       "Quality gates built on unit and Playwright integration tests, with automated QA running the same Playwright suite in two modes — mocked (intercepted GraphQL, forged Auth0 session, no backend) for fast PR checks, and live against a real backend for full end-to-end verification.",
     ],
     metrics: [
-      { n: "500+", label: "weekly patient sign-ups" },
-      { n: "200+", label: "active staff users" },
+      { n: "4,200+", label: "patients onboarded" },
+      { n: "45 states", label: "nationwide reach" },
+      { n: "260+", label: "active practice staff" },
       { n: "Mock + Live", label: "automated Playwright QA" },
-      { n: "2 PWAs", label: "practice + patient" },
     ],
     stack: [
       "Angular",
@@ -69,8 +69,8 @@ export const projects: Project[] = [
       "Auth0",
       "Playwright",
     ],
-    shotA: "practice-scheduling.png",
-    shotB: "patient-records.png",
+    shotA: "practice-dashboard.png",
+    shotB: "patient-mobile-health-history.png",
     shotDir: "sympliact",
     overview:
       "Sympliact is a healthcare collaboration platform connecting medical practices with their patients. Practices run scheduling, patient management, and multi-channel patient communication from an admin web app; patients manage their own health records, connect to their providers, and message their care team from a companion app. Both are Angular PWAs sharing one Rails + GraphQL backend — built and owned end-to-end as the founding engineer over seven years, from an empty repo to production.",
@@ -84,13 +84,15 @@ export const projects: Project[] = [
       "CI/CD with semantic-release, Sentry error monitoring, and PostHog product analytics.",
     ],
     gallery: [
-      { src: "practice-scheduling.png", caption: "Practice · resource scheduling calendar" },
-      { src: "practice-patients.png", caption: "Practice · patient roster" },
-      { src: "practice-metrics.png", caption: "Practice · billing & metrics" },
-      { src: "patient-records.png", caption: "Patient · health history" },
-      { src: "patient-providers.png", caption: "Patient · provider connections" },
-      { src: "patient-appointments.png", caption: "Patient · upcoming appointments" },
-      { src: "patient-care-threads.png", caption: "Patient · care threads" },
+      { src: "practice-dashboard.png", caption: "Practice · scheduling board + live notifications" },
+      { src: "practice-patient-profile.png", caption: "Practice · patient demographics & insurance" },
+      { src: "practice-health-history.png", caption: "Practice · clinical health history" },
+      { src: "practice-care-threads.png", caption: "Practice · care-thread collaboration (SOAP notes)" },
+      { src: "practice-profile.png", caption: "Practice · profile, HIPAA BAA & locations" },
+      { src: "patient-mobile-profile-switcher.png", caption: "Patient · family profile switcher (mobile)" },
+      { src: "patient-mobile-demographics.png", caption: "Patient · demographics & insurance (mobile)" },
+      { src: "patient-mobile-health-history.png", caption: "Patient · health history (mobile)" },
+      { src: "patient-mobile-providers.png", caption: "Patient · provider connections (mobile)" },
     ],
   },
   {
@@ -255,7 +257,7 @@ export const roles: Role[] = [
     period: "Feb 2019 – Present · Part-time · Remote",
     points: [
       "Architected and delivered an end-to-end healthcare platform from greenfield to production, owning all frontend development.",
-      "Built Angular Practice & Patient PWAs (plus the marketing site) scaling to 500+ weekly patient sign-ups and 200+ active staff users.",
+      "Built Angular Practice & Patient PWAs (plus the marketing site) driving 4,200+ self-service patient sign-ups across 45 states and 260+ active practice staff.",
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
       "Applied Lean Startup principles to drive rapid delivery as the sole frontend developer, shaping high-impact technical and business decisions.",
     ],
@@ -323,7 +325,7 @@ export const resume = {
   title: "Founding Engineer · Full-Stack Developer",
   location: "Cookeville, TN · Remote",
   summary:
-    "Founding engineer and full-stack developer specializing in Angular, TypeScript, and Rails. Seven years building Sympliact's healthcare platform from an empty repo to production, alongside consulting across health-tech, government, and B2B SaaS. I care about clean architecture, automated quality gates, and shipping fast without breaking trust.",
+    "Founding engineer and full-stack developer specializing in Angular, TypeScript, and Rails. Seven years building Sympliact's healthcare platform from an empty repo to production — now driving 4,200+ patient sign-ups across 45 states — alongside consulting across health-tech, government, and B2B SaaS. I care about clean architecture, automated quality gates, and shipping fast without breaking trust.",
   education: [
     {
       school: "Tennessee Technological University",

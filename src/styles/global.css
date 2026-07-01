@@ -714,6 +714,50 @@ html[data-theme='dark'] .astro-code span {
   max-width: 640px;
 }
 .contact-sub { font-family: var(--sans); color: var(--muted); font-size: 14px; margin-top: 10px; max-width: 520px; }
+
+/* intent tracks (consulting / full-time) */
+.contact-tracks {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  max-width: 720px;
+}
+.track {
+  background: var(--panelBody);
+  border: 1px solid var(--borderSoft);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.track--primary { border-color: var(--accentBorder); }
+.track-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 10.5px var(--mono);
+  color: var(--accent);
+  border: 1px solid var(--accentBorder);
+  border-radius: 20px;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.badge--muted { color: var(--faint); border-color: var(--border); }
+.track-desc {
+  font-family: var(--sans);
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin: 12px 0 18px;
+  flex: 1;
+}
+.track-cta { align-self: flex-start; }
+.contact-elsewhere { margin-top: 30px; }
+.contact-elsewhere .contact-rows { margin-top: 12px; }
+
 .contact-rows { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; max-width: 560px; }
 .contact-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 20px; border-radius: 10px; }
 .contact-arrow { color: var(--accent); }
@@ -730,6 +774,7 @@ html[data-theme='dark'] .astro-code span {
   .about-grid { grid-template-columns: 1fr !important; }
   .screens-grid { grid-template-columns: 1fr !important; }
   .metrics-grid { grid-template-columns: 1fr 1fr !important; }
+  .contact-tracks { grid-template-columns: 1fr !important; }
   .hero-name { font-size: 40px !important; letter-spacing: -1.4px !important; }
   .writing-row { grid-template-columns: 1fr !important; gap: 6px !important; }
 

@@ -30,16 +30,16 @@ export const projects: Project[] = [
     dir: "sympliact/",
     category: "Health Tech",
     roleShort: "founding engineer · 2019–now",
-    role: "Founding Engineer · Lead Full-Stack",
+    role: "Founding Engineer / Lead Full-Stack Engineer",
     dates: "Feb 2019 – Present",
     teaser:
-      "End-to-end healthcare platform, greenfield → production. Angular practice & patient apps at 500+ weekly sign-ups.",
+      "End-to-end healthcare platform, greenfield → production. Angular practice & patient PWAs at 500+ weekly sign-ups.",
     thesis:
       "Architected and delivered an end-to-end healthcare platform from greenfield to production — owning all frontend development as the founding engineer.",
     context:
       "A greenfield healthcare product with no engineering foundation. I joined as founding engineer to build the practice and patient experiences, set technical direction, and make releases safe enough for a regulated, high-stakes domain.",
     built: [
-      "Angular Practice & Patient platforms scaling to 500+ weekly sign-ups and 200+ active staff users.",
+      "Angular Practice & Patient PWAs (plus the marketing site) scaling to 500+ weekly patient sign-ups and 200+ active staff users.",
       "Automated CI/CD pipelines and quality gates sustaining 80% coverage across 90% of feature work.",
       "Lean-startup delivery as sole frontend dev, driving high-impact technical and business decisions.",
     ],
@@ -64,27 +64,28 @@ export const projects: Project[] = [
     id: "siriusxm",
     name: "SiriusXM",
     dir: "siriusxm/",
-    category: "Media / Lead",
-    roleShort: "technical PM · lead",
-    role: "Technical Project Manager · Team Lead",
-    dates: "Contract",
+    category: "Media / Streaming",
+    roleShort: "lead frontend · via Metova",
+    role: "Lead Frontend Engineer (Metova)",
+    dates: "2017 – 2018",
     teaser:
-      "Led the team and managed delivery of an Angular 2 frontend rewrite.",
+      "Led an 8-engineer team re-architecting the SiriusXM web player (AngularJS → Angular).",
     thesis:
-      "Led a team of engineers to rewrite the SiriusXM web frontend in Angular 2 — owning delivery and project management end to end.",
+      "Led an 8-engineer team at Metova re-architecting the SiriusXM web player from AngularJS to Angular — a modern, high-performance live audio & video streaming experience.",
     context:
-      "SiriusXM needed a modern web frontend. I stepped in as technical project manager and lead — coordinating engineers, defining scope, and keeping delivery on track through a full framework migration.",
+      "SiriusXM's web player needed to move off AngularJS onto a modern framework. As lead frontend engineer at Metova, I drove the re-architecture, set the testing strategy, and led team delivery for a high-traffic streaming product.",
     built: [
-      "Rewrote the SiriusXM web frontend in Angular 2.",
-      "Led and coordinated a team of engineers as technical project manager.",
-      "Owned scope, planning, and delivery across the migration.",
+      "Re-architected the SiriusXM web player from AngularJS to Angular for live audio & video streaming.",
+      "Led an 8-engineer team, establishing frontend architecture and testing standards.",
+      "Raised code coverage from 0% to 80% (Jasmine / Karma), cutting sprint bug rates from ~70% to under 20%.",
     ],
     metrics: [
-      { n: "Lead", label: "engineering team + delivery" },
-      { n: "Angular 2", label: "full framework migration" },
-      { n: "End-to-end", label: "scope → ship" },
+      { n: "8-eng", label: "team led" },
+      { n: "0 → 80%", label: "test coverage" },
+      { n: "70 → 20%", label: "sprint bug rate" },
+      { n: "AngularJS → Angular", label: "full re-architecture" },
     ],
-    stack: ["Angular 2", "TypeScript", "Team Lead", "Delivery"],
+    stack: ["Angular", "TypeScript", "Streaming Media", "Jasmine / Karma", "Team Lead"],
     shotA: "player-ui.png",
     shotB: "catalog.png",
   },
@@ -153,7 +154,7 @@ export const projects: Project[] = [
     category: "B2B SaaS",
     roleShort: "shipment & orders platform",
     role: "Senior Full-Stack Engineer · Consultant",
-    dates: "Consulting",
+    dates: "Apr 2022 – Nov 2025",
     teaser:
       "Rails + Angular platform automating $1M+ inventory ops; self-serve portal driving $100K+ online orders.",
     thesis:
@@ -164,6 +165,7 @@ export const projects: Project[] = [
       "Rails + Angular shipment & order-management platform automating $1M+ in inventory operations.",
       "Customer self-serve portal replacing manual phone orders, driving $100K+ in online transactions.",
       "Loyalty feature generating $15K+ repeat business, plus an AWS email parser that ingests order emails and auto-generates shipping options.",
+      "Directed development of a Next.js closed B2B marketplace.",
     ],
     metrics: [
       { n: "$1M+", label: "inventory ops automated" },
@@ -174,6 +176,35 @@ export const projects: Project[] = [
     stack: ["Rails", "Angular", "AWS", "Next.js", "Automation"],
     shotA: "orders-dashboard.png",
     shotB: "self-serve-portal.png",
+  },
+  {
+    id: "trade-bot",
+    name: "AI Trade Bot",
+    dir: "trade-bot/",
+    category: "AI · Side Project",
+    roleShort: "personal · 2025",
+    role: "Solo Build",
+    dates: "Oct 2025",
+    teaser:
+      "Discord trading assistant — Claude-driven trade reasoning over live market data, RAG, and the Schwab API.",
+    thesis:
+      "Built a Discord bot that reasons about trades with Claude, combining retrieval-augmented context, live market-data APIs, and technical-analysis tools over a Schwab brokerage integration.",
+    context:
+      "A personal project to explore agentic LLM tooling end to end: give Claude the right context and tools to reason about real market data and surface trade ideas, all from a natural-language Discord command.",
+    built: [
+      "Discord bot that turns natural-language commands into Claude-driven trade reasoning.",
+      "Retrieval-augmented pipeline blending live market-data APIs and technical-analysis tools as model context.",
+      "Schwab API integration for live account and market data.",
+    ],
+    metrics: [
+      { n: "Claude", label: "trade-reasoning engine" },
+      { n: "RAG", label: "market-data + TA context" },
+      { n: "Schwab API", label: "live brokerage integration" },
+      { n: "Discord", label: "chat-native interface" },
+    ],
+    stack: ["Claude API", "RAG", "Market Data APIs", "Schwab API", "Discord"],
+    shotA: "discord-command.png",
+    shotB: "trade-analysis.png",
   },
 ];
 
@@ -186,32 +217,63 @@ export interface Role {
 
 export const roles: Role[] = [
   {
-    role: "Founding Engineer / Lead Full-Stack",
+    role: "Founding Engineer / Lead Full-Stack Engineer",
     company: "Sympliact, Inc",
-    period: "Feb 2019 – Present · Remote",
+    period: "Feb 2019 – Present · Part-time · Remote",
     points: [
-      "Architected an end-to-end healthcare platform from greenfield to production, managing all frontend development.",
-      "Built Angular practice & patient platforms scaling to 500+ weekly sign-ups and 200+ active staff users.",
-      "Established CI/CD pipelines and quality gates sustaining 80% coverage and a low-regression release cadence.",
+      "Architected and delivered an end-to-end healthcare platform from greenfield to production, owning all frontend development.",
+      "Built Angular Practice & Patient PWAs (plus the marketing site) scaling to 500+ weekly patient sign-ups and 200+ active staff users.",
+      "Established CI/CD and quality gates sustaining 80% test coverage across 90% of feature work, with a safe, low-regression release cadence.",
+      "Applied Lean Startup principles to drive rapid delivery as the sole frontend developer, shaping high-impact technical and business decisions.",
     ],
   },
   {
     role: "Senior Full-Stack Engineer",
     company: "Consultant / Self-Employed",
-    period: "Feb 2019 – Present · Remote",
+    period: "Feb 2019 – Present · Contract · Remote",
     points: [
-      "Symetra — Figma-style email-template studio with live rendering + campaign analytics for a Fortune 500 insurer.",
-      "Confidential government client — air-gapped generative-AI chat platform in Angular with streaming + MCP tools.",
-      "Hexa Containment — Rails + Angular platform automating $1M+ inventory ops and $100K+ self-serve orders.",
+      "Hexa Containment — Rails + Angular platform automating $1M+ inventory ops, a $100K+ self-serve portal, a $15K+ loyalty feature, an AWS email parser, and a Next.js B2B marketplace.",
+      "Confidential government client — air-gapped, on-prem generative-AI chat platform in Angular (Gemini-style) with real-time streaming, MCP tool integrations, and usage analytics.",
+      "Symetra (Fortune 500 insurance) — Figma-style email-template studio with live in-canvas rendering and campaign analytics; owned product, UX, and frontend.",
     ],
   },
   {
-    role: "Technical Project Manager · Lead",
-    company: "SiriusXM",
-    period: "Prior",
+    role: "Senior Full-Stack Engineer",
+    company: "Otus",
+    period: "Sep 2021 – Feb 2022 · Remote",
     points: [
-      "Led a team of engineers to rewrite the SiriusXM web frontend in Angular 2.",
-      "Owned project management, scope, and delivery across the migration.",
+      "Partnered with the Principal Frontend Engineer on architecture — micro-frontends, refactoring strategy, and testing standards — improving scalability and maintainability.",
+      "Drove scalable, maintainable solutions for authentication / authorization microservices alongside backend leadership.",
+      "Led architectural planning to convert Login, Sign-up, and User-Management modules to micro-frontend patterns.",
+    ],
+  },
+  {
+    role: "Lead Software Engineer",
+    company: "Airvel",
+    period: "Feb 2019 – Oct 2019 · Remote",
+    points: [
+      "Led implementation of the Airvel marketplace and flight-management site for businesses, full-stack in Angular.",
+      "Architected an efficient, scalable API using Apollo Federated GraphQL with the backend team.",
+      "Integrated Stripe for secure Card + ACH payments in the $50K–$150K range.",
+    ],
+  },
+  {
+    role: "Front End Developer",
+    company: "axialHealthcare",
+    period: "Aug 2018 – Jan 2019 · Remote",
+    points: [
+      "Built key features for a pharmacist-focused Angular application supporting opioid-addiction management.",
+      "Took the initiative to learn iOS development, proof-of-concepting ideas and expanding the platform's direction.",
+    ],
+  },
+  {
+    role: "Lead Frontend Engineer",
+    company: "Metova, Inc.",
+    period: "2015 – 2018 · Franklin, TN",
+    points: [
+      "Led an 8-engineer team re-architecting the SiriusXM web player (AngularJS → Angular) for live audio & video streaming.",
+      "Raised code coverage from 0% to 80% (Jasmine / Karma), cutting sprint bug rates from ~70% to under 20%.",
+      "Applied The Phoenix Project principles to build the org's highest-velocity team; grew from full-stack intern to lead, including a Ruby on Rails e-reader platform.",
     ],
   },
 ];
@@ -220,15 +282,15 @@ export const skills: string[] = [
   "Angular",
   "TypeScript",
   "RxJS",
-  "Rails",
   "Next.js",
+  "Rails",
+  "GraphQL",
   "AWS",
+  "PostgreSQL",
   "CI/CD",
-  "Jest",
-  "Cypress",
-  "MCP",
-  "Streaming / SSE",
-  "UX Design",
+  "Jest / Cypress",
+  "RAG / LLMs",
+  "Stripe",
 ];
 
 // Social / contact links.

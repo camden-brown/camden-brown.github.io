@@ -3,7 +3,37 @@ import Shell from '../layouts/Shell.astro';
 import Prompt from '../components/Prompt.astro';
 import { links } from '../data/portfolio';
 
-const rows = [
+const email = links.emailAddress;
+
+// Prefilled mailto: subject labels the intent (inbox self-sorts) and the body
+// nudges the sender to include the details that make a first reply useful.
+const consultingBody = `Hi Camden,
+
+I'd like to talk about a consulting engagement.
+
+Project / scope:
+Timeline:
+Budget range:
+
+Thanks,`;
+
+const fulltimeBody = `Hi Camden,
+
+We're hiring and I'd like to connect.
+
+Company:
+Role:
+Location / remote:
+
+Thanks,`;
+
+const mailto = (subject: string, body: string) =>
+  `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+const consultingHref = mailto('Consulting inquiry', consultingBody);
+const fulltimeHref = mailto('Full-time opportunity', fulltimeBody);
+
+const socialRows = [
   {
     href: links.linkedin,
     label: 'LinkedIn',
@@ -19,10 +49,10 @@ const rows = [
     external: true,
   },
   {
-    href: links.email,
+    href: `mailto:${email}`,
     label: 'Email',
-    note: '· say hello',
-    right: `${links.emailAddress} ↗`,
+    note: '· direct',
+    right: `${email} ↗`,
     external: false,
   },
 ];
@@ -30,29 +60,61 @@ const rows = [
 
 <Shell path="~/contact" active="contact" title="Contact — Camden Brown">
   <Prompt cmd="./contact.sh" />
-  <div class="contact-title">Let’s build something.</div>
+  <div class="contact-title">Let’s work together.</div>
   <div class="contact-sub">
-    Open to senior / lead full-stack and founding-engineer roles. The fastest way to reach me is
-    LinkedIn or GitHub.
+    Available for consulting engagements now — and open to select senior, lead, and
+    founding-engineer roles. Pick whichever fits and say hello.
   </div>
 
-  <div class="contact-rows">
-    {
-      rows.map((r) => (
-        <a
-          href={r.href}
-          {...(r.external ? { target: '_blank', rel: 'noopener' } : {})}
-          class="prow contact-row"
-        >
-          <span>
-            <span class="contact-arrow">→</span>
-            <span class="contact-label"> {r.label}</span>
-            <span class="contact-note"> {r.note}</span>
-          </span>
-          <span class="contact-right">{r.right}</span>
-        </a>
-      ))
-    }
+  <div class="contact-tracks">
+    <!-- consulting (primary) -->
+    <div class="track track--primary">
+      <div class="track-head">
+        <span class="label">## CONSULTING</span>
+        <span class="badge"><span class="badge-dot"></span> available now</span>
+      </div>
+      <p class="track-desc">
+        Fractional and project-based work — frontend architecture, greenfield → production
+        builds, Angular · TypeScript · Rails, and streaming-AI product UX. Bring a scope and a
+        timeline; I’ll tell you honestly if I’m the right fit.
+      </p>
+      <a class="btn btn--accent track-cta" href={consultingHref}>→ start a consulting inquiry</a>
+    </div>
+
+    <!-- full-time (secondary) -->
+    <div class="track">
+      <div class="track-head">
+        <span class="label">## FULL-TIME</span>
+        <span class="badge badge--muted"><span class="badge-dot"></span> selective</span>
+      </div>
+      <p class="track-desc">
+        Senior, lead, or founding-engineer roles on ambitious product teams. I’m selective, but
+        always happy to talk to the right team solving a real problem.
+      </p>
+      <a class="btn track-cta" href={fulltimeHref}>→ talk about a full-time role</a>
+    </div>
+  </div>
+
+  <div class="contact-elsewhere">
+    <div class="label">## ELSEWHERE</div>
+    <div class="contact-rows">
+      {
+        socialRows.map((r) => (
+          <a
+            href={r.href}
+            {...(r.external ? { target: '_blank', rel: 'noopener' } : {})}
+            class="prow contact-row"
+          >
+            <span>
+              <span class="contact-arrow">→</span>
+              <span class="contact-label"> {r.label}</span>
+              <span class="contact-note"> {r.note}</span>
+            </span>
+            <span class="contact-right">{r.right}</span>
+          </a>
+        ))
+      }
+    </div>
   </div>
 
   <div class="cursor-line"><span class="blink">&#9611;</span></div>

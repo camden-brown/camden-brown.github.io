@@ -61,8 +61,20 @@ const { project: cp, prev, next } = Astro.props;
   <div class="section">
     <div class="label">## SCREENS</div>
     <div class="screens-grid">
-      <div class="shot">[ {cp.shotA} ]</div>
-      <div class="shot">[ {cp.shotB} ]</div>
+      {
+        cp.shotDir ? (
+          <img class="shot" src={`/${cp.shotDir}/${cp.shotA}`} alt={`${cp.name} screenshot`} loading="lazy" />
+        ) : (
+          <div class="shot">[ {cp.shotA} ]</div>
+        )
+      }
+      {
+        cp.shotDir ? (
+          <img class="shot" src={`/${cp.shotDir}/${cp.shotB}`} alt={`${cp.name} screenshot`} loading="lazy" />
+        ) : (
+          <div class="shot">[ {cp.shotB} ]</div>
+        )
+      }
     </div>
   </div>
 

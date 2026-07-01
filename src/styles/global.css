@@ -385,6 +385,13 @@ a {
 
 .sans { font-family: var(--sans); }
 
+/* real screenshots reuse .shot's frame but fill it */
+img.shot {
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
 /* ============================================================
    Article prose (Writing detail)
    ============================================================ */

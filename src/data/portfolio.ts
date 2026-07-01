@@ -21,6 +21,8 @@ export interface Project {
   stack: string[];
   shotA: string;
   shotB: string;
+  /** When set, shotA/shotB are real images under /public/<shotDir>/; otherwise they render as captioned placeholders. */
+  shotDir?: string;
 }
 
 export const projects: Project[] = [
@@ -33,32 +35,36 @@ export const projects: Project[] = [
     role: "Founding Engineer / Lead Full-Stack Engineer",
     dates: "Feb 2019 – Present",
     teaser:
-      "End-to-end healthcare platform, greenfield → production. Angular practice & patient PWAs at 500+ weekly sign-ups.",
+      "Founding-engineer build of a healthcare platform — Practice & Patient Angular PWAs on a Rails + GraphQL API, greenfield → production.",
     thesis:
-      "Architected and delivered an end-to-end healthcare platform from greenfield to production — owning all frontend development as the founding engineer.",
+      "Architected and delivered Sympliact's healthcare platform from an empty repo to production — two Angular PWAs on a Rails + GraphQL backend, owning all frontend development as the founding engineer.",
     context:
-      "A greenfield healthcare product with no engineering foundation. I joined as founding engineer to build the practice and patient experiences, set technical direction, and make releases safe enough for a regulated, high-stakes domain.",
+      "A greenfield healthcare product with no engineering foundation. As founding engineer I built both the practice-facing and patient-facing experiences, set the technical direction, and made releases safe enough for a regulated, high-stakes domain.",
     built: [
-      "Angular Practice & Patient PWAs (plus the marketing site) scaling to 500+ weekly patient sign-ups and 200+ active staff users.",
-      "Automated CI/CD pipelines and quality gates sustaining 80% coverage across 90% of feature work.",
-      "Lean-startup delivery as sole frontend dev, driving high-impact technical and business decisions.",
+      "Practice PWA — appointment scheduling (FullCalendar), patient management, provider & staff administration, configurable automated notifications, and usage metrics.",
+      "Patient PWA — multi-profile health records, provider connections & authorizations, secure care-thread messaging, and record search with predictive suggestions.",
+      "NgRx state architecture and Angular Material across both apps, delivered as offline-capable PWAs with Auth0 auth against a Rails + GraphQL API (Postgres, Elasticsearch, Sidekiq).",
+      "Quality gates sustaining ~80% coverage — unit tests plus a mocked Playwright acceptance harness that exercises full flows with no backend required.",
     ],
     metrics: [
       { n: "500+", label: "weekly patient sign-ups" },
       { n: "200+", label: "active staff users" },
       { n: "80%", label: "sustained test coverage" },
-      { n: "7 yrs", label: "sole FE owner, greenfield → prod" },
+      { n: "2 PWAs", label: "practice + patient" },
     ],
     stack: [
       "Angular",
+      "NgRx",
       "TypeScript",
-      "RxJS",
-      "CI/CD",
-      "Jest / Cypress",
-      "HIPAA-aware",
+      "Angular Material",
+      "Rails",
+      "GraphQL",
+      "PostgreSQL",
+      "Auth0",
     ],
-    shotA: "patient-dashboard.png",
-    shotB: "scheduling.png",
+    shotA: "practice-scheduling.png",
+    shotB: "patient-records.png",
+    shotDir: "sympliact",
   },
   {
     id: "siriusxm",

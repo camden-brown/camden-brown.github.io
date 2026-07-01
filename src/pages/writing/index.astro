@@ -1,0 +1,31 @@
+---
+import Shell from '../../layouts/Shell.astro';
+import Prompt from '../../components/Prompt.astro';
+import { getSortedPosts, fmtDate } from '../../lib/posts';
+
+const posts = await getSortedPosts();
+---
+
+<Shell path="~/writing" active="writing" title="Writing — Camden Brown">
+  <Prompt cmd="cat ./writing/*" />
+  <div class="page-title">What I’m learning</div>
+  <div class="page-intro">
+    Notes from the work — Go fundamentals, full-stack monorepos, editor internals, and staying sharp
+    across a long-running founding-engineer role.
+  </div>
+
+  <div class="rows--writing">
+    {
+      posts.map((p) => (
+        <a class="wrow writing-row" href={`/writing/${p.id}/`}>
+          <span class="wr-date">{fmtDate(p.data.date)}</span>
+          <div>
+            <div class="wr-title">{p.data.title}</div>
+            <div class="wr-desc">{p.data.description}</div>
+            <div class="wr-read">read →</div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</Shell>

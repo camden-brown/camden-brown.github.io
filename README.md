@@ -1,43 +1,70 @@
-# Chirpy Starter
+# camden-brown.github.io
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+Personal portfolio + blog for **Camden Brown**, senior full-stack engineer. A
+developer-native / terminal aesthetic — a macOS-style terminal window with a
+command-prompt hero, monospace chrome, and a light/dark toggle.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+Built with [Astro](https://astro.build) (static output) and deployed to GitHub
+Pages via GitHub Actions.
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+## Stack
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+- **Astro** — static site generation, real routes per view, View Transitions for
+  smooth client-side navigation.
+- **Fonts** — Space Grotesk (display/body) + JetBrains Mono (chrome) via Google Fonts.
+- **Content collections** — blog posts live as Markdown in `src/content/writing/`.
+- No runtime framework; syntax highlighting via Astro's built-in Shiki.
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+## Develop
+
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # -> dist/
+npm run preview  # serve the production build locally
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+## Project layout
 
-## Usage
+```
+src/
+├── content/writing/   # blog posts (Markdown + frontmatter)
+├── content.config.ts  # writing collection schema
+├── data/portfolio.ts  # projects, roles, skills, links
+├── layouts/Shell.astro# terminal window chrome + nav + theme toggle
+├── components/         # shared bits (Prompt)
+├── lib/posts.ts        # post loading/sorting helpers
+├── pages/             # routes: /, /projects, /projects/[id], /writing,
+│                      #         /writing/[slug], /about, /experience, /contact
+└── styles/global.css   # design tokens (dark + light) and shell styles
+public/                 # avatar.jpg, favicons — copied verbatim to the site root
+```
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+## Editing content
 
-## Contributing
+- **Projects / experience / skills** — edit `src/data/portfolio.ts`.
+- **Blog posts** — add a Markdown file under `src/content/writing/`. Frontmatter:
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+  ```yaml
+  ---
+  title: My Post Title
+  date: 2026-01-15
+  tags: [go, testing]
+  categories: [Programming, Go]
+  description: One-line summary shown in the writing list.
+  ---
+  ```
+
+- **Theme** — colors are CSS custom properties in `src/styles/global.css`
+  (`:root` for dark, `html[data-theme="light"]` for light). The toggle persists
+  to `localStorage` and respects `prefers-color-scheme` on first visit.
+
+## Deploy
+
+Pushing to `main` triggers `.github/workflows/pages-deploy.yml`, which builds the
+site and publishes `dist/` to GitHub Pages. Ensure **Settings → Pages → Source**
+is set to **GitHub Actions**.
 
 ## License
 
-This work is published under [MIT][mit] License.
-
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+[MIT](LICENSE)

@@ -1,0 +1,140 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  /** terminal path label, e.g. "~", "~/projects", "~/projects/hexa" */
+  path?: string;
+  /** which nav item is active */
+  active?: 'home' | 'projects' | 'writing' | 'about' | 'experience' | 'contact';
+  title?: string;
+  description?: string;
+}
+
+const {
+  path = '~',
+  active = 'home',
+  title = 'Camden Brown — Senior Full-Stack Engineer',
+  description = 'Camden Brown — senior full-stack engineer. Angular · TypeScript · Rails. Health-tech and B2B SaaS, greenfield to production.',
+} = Astro.props;
+
+const nav = [
+  { id: 'home', label: 'home', href: '/' },
+  { id: 'projects', label: 'projects', href: '/projects/' },
+  { id: 'writing', label: 'writing', href: '/writing/' },
+  { id: 'about', label: 'about', href: '/about/' },
+  { id: 'experience', label: 'experience', href: '/experience/' },
+  { id: 'contact', label: 'contact', href: '/contact/' },
+] as const;
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <ClientRouter />
+
+    {/* Apply persisted / preferred theme before paint to avoid a flash. */}
+    <script is:inline>
+      (function () {
+        function apply() {
+          try {
+            var stored = localStorage.getItem('theme');
+            var theme =
+              stored ||
+              (window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark');
+            document.documentElement.setAttribute('data-theme', theme);
+          } catch (e) {}
+        }
+        apply();
+        // Re-apply after each View Transition swap.
+        document.addEventListener('astro:after-swap', apply);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="window">
+      <!-- window chrome -->
+      <div class="titlebar">
+        <span class="dot dot-r"></span>
+        <span class="dot dot-y"></span>
+        <span class="dot dot-g"></span>
+        <span class="titlebar-path">camden@portfolio <span class="sep">&mdash;</span> {path}</span>
+        <nav class="nav">
+          {
+            nav.map((item) => (
+              <a
+                class:list={['navlink', { active: active === item.id }]}
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme"></button>
+        </nav>
+      </div>
+
+      <!-- body -->
+      <div class="body">
+        <slot />
+      </div>
+
+      <!-- status bar -->
+      <div class="statusbar">
+        <span class="branch">&#9095; main</span>
+        <span>✓ 80% coverage</span>
+        <span>Angular · TS · Rails</span>
+        <span class="spacer">© 2026 Camden Brown</span>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        function label() {
+          return document.documentElement.getAttribute('data-theme') === 'dark'
+            ? '◐ light'
+            : '◑ dark';
+        }
+        function wire() {
+          var btn = document.getElementById('theme-toggle');
+          if (!btn) return;
+          btn.textContent = label();
+          btn.onclick = function () {
+            var next =
+              document.documentElement.getAttribute('data-theme') === 'dark'
+                ? 'light'
+                : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            try {
+              localStorage.setItem('theme', next);
+            } catch (e) {}
+            btn.textContent = label();
+          };
+        }
+        wire();
+        document.addEventListener('astro:after-swap', wire);
+      })();
+    </script>
+  </body>
+</html>

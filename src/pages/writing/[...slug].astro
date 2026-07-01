@@ -1,0 +1,43 @@
+---
+import { render } from 'astro:content';
+import Shell from '../../layouts/Shell.astro';
+import { getSortedPosts, fmtDate } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts();
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, prev: posts[i + 1], next: posts[i - 1] },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Shell
+  path={`~/writing/${post.id}`}
+  active="writing"
+  title={`${post.data.title} — Camden Brown`}
+  description={post.data.description}
+>
+  <a href="/writing/" class="prompt">
+    <span class="user">camden@portfolio</span> ~/writing % <span class="cmd">cat {post.id}.md</span>
+  </a>
+
+  <article class="article prose">
+    <h1 class="article-title">{post.data.title}</h1>
+    <div class="article-meta">
+      <span>{fmtDate(post.data.date)}</span>
+      {post.data.tags.length > 0 && <span>{post.data.tags.map((t) => `#${t}`).join('  ')}</span>}
+    </div>
+    <div class="article-body">
+      <Content />
+    </div>
+  </article>
+
+  <div class="article-pager">
+    {prev ? <a href={`/writing/${prev.id}/`} class="lrow">← {prev.data.title}</a> : <span></span>}
+    {next ? <a href={`/writing/${next.id}/`} class="lrow">{next.data.title} →</a> : <span></span>}
+  </div>
+</Shell>

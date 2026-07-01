@@ -1,0 +1,32 @@
+---
+import Shell from '../../layouts/Shell.astro';
+import Prompt from '../../components/Prompt.astro';
+import { projects } from '../../data/portfolio';
+---
+
+<Shell path="~/projects" active="projects" title="Projects — Camden Brown">
+  <Prompt cmd="ls -la ./projects" />
+  <div class="page-title">Projects</div>
+  <div class="page-intro">
+    Five platforms across health tech, media, insurance, government, and B2B SaaS. Click any to open
+    the case study.
+  </div>
+
+  <div class="rows rows--list">
+    {
+      projects.map((p, i) => (
+        <a class="prow project-row project-row--list" href={`/projects/${p.id}/`}>
+          <span class="row-index">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <div class="row-head">
+              <span class="proj-name">{p.name}</span>
+              <span class="role-short">{p.roleShort}</span>
+            </div>
+            <div class="teaser">{p.teaser}</div>
+          </div>
+          <span class="row-meta">{p.category} <span class="parr">→</span></span>
+        </a>
+      ))
+    }
+  </div>
+</Shell>

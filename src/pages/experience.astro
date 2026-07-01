@@ -1,0 +1,30 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { roles } from '../data/portfolio';
+---
+
+<Shell path="~/experience" active="experience" title="Experience — Camden Brown">
+  <Prompt cmd="git log --oneline ./experience" />
+  <div class="page-title">Experience</div>
+
+  <div class="timeline">
+    {
+      roles.map((r) => (
+        <div class="tl-item">
+          <span class="tl-dot" />
+          <div class="row-head">
+            <span class="tl-role">{r.role}</span>
+            <span class="tl-company">{r.company}</span>
+          </div>
+          <div class="tl-period">{r.period}</div>
+          <ul class="bullets bullets--tight">
+            {r.points.map((pt) => (
+              <li class="bullet"><span class="bullet-mark">&#9656;</span><span>{pt}</span></li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Shell>

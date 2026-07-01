@@ -1,0 +1,16 @@
+---
+interface Props {
+  /** path shown after the user, e.g. "~" or "~/projects" */
+  cwd?: string;
+  /** the typed command */
+  cmd: string;
+  /** larger spacing variant used in the home hero flow */
+  lg?: boolean;
+  /** show a blinking cursor after the command */
+  cursor?: boolean;
+}
+const { cwd = '~', cmd, lg = false, cursor = false } = Astro.props;
+---
+<div class:list={['prompt', { 'prompt-lg': lg }]}>
+  <span class="user">camden@portfolio</span> {cwd} % <span class="cmd">{cmd}</span>{cursor && <span class="blink">&#9611;</span>}
+</div>

@@ -1,0 +1,59 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { links } from '../data/portfolio';
+
+const rows = [
+  {
+    href: links.linkedin,
+    label: 'LinkedIn',
+    note: '· camden-brown',
+    right: 'in/camden-brown-b6287384 ↗',
+    external: true,
+  },
+  {
+    href: links.github,
+    label: 'GitHub',
+    note: '· open source & experiments',
+    right: 'github.com/camden-brown ↗',
+    external: true,
+  },
+  {
+    href: links.email,
+    label: 'Email',
+    note: '· say hello',
+    right: `${links.emailAddress} ↗`,
+    external: false,
+  },
+];
+---
+
+<Shell path="~/contact" active="contact" title="Contact — Camden Brown">
+  <Prompt cmd="./contact.sh" />
+  <div class="contact-title">Let’s build something.</div>
+  <div class="contact-sub">
+    Open to senior / lead full-stack and founding-engineer roles. The fastest way to reach me is
+    LinkedIn or GitHub.
+  </div>
+
+  <div class="contact-rows">
+    {
+      rows.map((r) => (
+        <a
+          href={r.href}
+          {...(r.external ? { target: '_blank', rel: 'noopener' } : {})}
+          class="prow contact-row"
+        >
+          <span>
+            <span class="contact-arrow">→</span>
+            <span class="contact-label"> {r.label}</span>
+            <span class="contact-note"> {r.note}</span>
+          </span>
+          <span class="contact-right">{r.right}</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="cursor-line"><span class="blink">&#9611;</span></div>
+</Shell>

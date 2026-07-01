@@ -1,0 +1,38 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { skills } from '../data/portfolio';
+---
+
+<Shell path="~/about" active="about" title="About — Camden Brown">
+  <Prompt cmd="cat about.md" />
+  <div class="about-grid">
+    <div>
+      <div class="page-title flush">About</div>
+      <p class="copy copy--lg">
+        I’m a senior full-stack engineer focused on the frontend — Angular, TypeScript, and Rails.
+        For the last seven years I’ve been the founding engineer at Sympliact, architecting a
+        healthcare platform from an empty repo to a production system that supports hundreds of
+        patients and staff every week.
+      </p>
+      <p class="copy copy--lg">
+        Alongside that I consult across health tech and B2B SaaS — a Figma-style email editor for a
+        Fortune 500 insurer, an air-gapped generative-AI chat platform for a government client, and a
+        shipment-operations platform automating seven figures of inventory. I care about clean
+        architecture, safe release cadence, and shipping fast without breaking trust.
+      </p>
+      <div class="label mt-24">## CURRENTLY</div>
+      <p class="copy">
+        Building at Sympliact, consulting on frontend architecture, and writing about Go, streaming
+        AI, and editor internals. Based in Cookeville, Tennessee · remote.
+      </p>
+    </div>
+    <div>
+      <img class="portrait" src="/avatar.jpg" alt="Camden Brown" />
+      <div class="label mt-18">## TOOLKIT</div>
+      <div class="chips mt-12">
+        {skills.map((s) => <span class="chip">{s}</span>)}
+      </div>
+    </div>
+  </div>
+</Shell>

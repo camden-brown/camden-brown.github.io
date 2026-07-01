@@ -1,0 +1,80 @@
+---
+import Shell from '../../layouts/Shell.astro';
+import { projects } from '../../data/portfolio';
+
+export function getStaticPaths() {
+  return projects.map((p, i) => {
+    const prev = projects[(i - 1 + projects.length) % projects.length];
+    const next = projects[(i + 1) % projects.length];
+    return { params: { id: p.id }, props: { project: p, prev, next } };
+  });
+}
+
+const { project: cp, prev, next } = Astro.props;
+---
+
+<Shell path={`~/projects/${cp.id}`} active="projects" title={`${cp.name} — Camden Brown`} description={cp.thesis}>
+  <a href="/projects/" class="prompt">
+    <span class="user">camden@portfolio</span> ~/projects % <span class="cmd">cat {cp.id}.md</span>
+  </a>
+
+  <div class="case-head">
+    <div>
+      <div class="case-name">{cp.name}</div>
+      <div class="case-meta">
+        {cp.role} &nbsp;<span class="case-sep">|</span>&nbsp; {cp.dates} &nbsp;<span class="case-sep">|</span>&nbsp; {cp.category}
+      </div>
+    </div>
+    <a href="/projects/" class="btn btn--sm">← all projects</a>
+  </div>
+
+  <div class="case-thesis">{cp.thesis}</div>
+
+  <div class="metrics-grid" data-cols={String(cp.metrics.length)}>
+    {
+      cp.metrics.map((m) => (
+        <div class="tile">
+          <div class="tile-n">{m.n}</div>
+          <div class="tile-label">{m.label}</div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="label">## CONTEXT</div>
+      <p class="copy">{cp.context}</p>
+    </div>
+    <div>
+      <div class="label">## WHAT I BUILT</div>
+      <ul class="bullets">
+        {
+          cp.built.map((b) => (
+            <li class="bullet"><span class="bullet-mark">&#9656;</span><span>{b}</span></li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="label">## SCREENS</div>
+    <div class="screens-grid">
+      <div class="shot">[ {cp.shotA} ]</div>
+      <div class="shot">[ {cp.shotB} ]</div>
+    </div>
+  </div>
+
+  <div class="stack-row">
+    <span class="label">## STACK</span>
+    <div class="chips">
+      {cp.stack.map((s) => <span class="chip">{s}</span>)}
+    </div>
+  </div>
+
+  <div class="pager">
+    <a href={`/projects/${prev.id}/`} class="lrow">← {prev.name}</a>
+    <a href={`/projects/${next.id}/`} class="lrow">{next.name} →</a>
+  </div>
+</Shell>

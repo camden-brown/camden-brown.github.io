@@ -1,0 +1,57 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { projects, links } from '../data/portfolio';
+import { getSortedPosts, fmtDate } from '../lib/posts';
+
+const posts = (await getSortedPosts()).slice(0, 4);
+---
+
+<Shell path="~" active="home">
+  <div class="last-login">Last login: Wed Jul 1 09:14 on ttys002</div>
+  <Prompt cmd="whoami" lg />
+
+  <div class="hero">
+    <div class="hero-name">Camden Brown</div>
+    <div class="hero-role">senior full-stack engineer</div>
+    <div class="hero-tagline">
+      Angular · TypeScript · Rails. I build health-tech and B2B SaaS products from greenfield to
+      production — founding engineer, frontend architect, occasional TPM.
+    </div>
+    <div class="hero-links">
+      <a href={links.github} target="_blank" rel="noopener" class="btn btn--accent">→ github</a>
+      <a href={links.linkedin} target="_blank" rel="noopener" class="btn">→ linkedin</a>
+    </div>
+  </div>
+
+  <div class="cmd-block"><Prompt cmd="ls ./featured-projects" /></div>
+
+  <div class="rows">
+    {
+      projects.map((p) => (
+        <a class="prow project-row" href={`/projects/${p.id}/`}>
+          <span class="row-marker">&#9656;</span>
+          <div>
+            <div class="row-head">
+              <span class="proj-dir">{p.dir}</span>
+              <span class="role-short">{p.roleShort}</span>
+            </div>
+            <div class="teaser">{p.teaser}</div>
+          </div>
+          <span class="parr parr--lg">→</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="cmd-block"><Prompt cmd="tail ./writing" cursor /></div>
+  <div class="rows--tail">
+    {
+      posts.map((p) => (
+        <a class="lrow" href={`/writing/${p.id}/`}>
+          <span class="date">{fmtDate(p.data.date)}</span> &nbsp; {p.data.title}
+        </a>
+      ))
+    }
+  </div>
+</Shell>

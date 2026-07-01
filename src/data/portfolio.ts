@@ -237,7 +237,7 @@ export const projects: Project[] = [
       { n: "Schwab API", label: "live brokerage integration" },
       { n: "Discord", label: "chat-native interface" },
     ],
-    stack: ["Claude API", "RAG", "Market Data APIs", "Schwab API", "Discord"],
+    stack: ["Node.js / TypeScript", "Claude API", "RAG", "Schwab API", "Discord"],
     shotA: "discord-command.png",
     shotB: "trade-analysis.png",
   },
@@ -259,7 +259,7 @@ export const roles: Role[] = [
       "Architected and delivered an end-to-end healthcare platform from greenfield to production, owning all frontend development.",
       "Built Angular Practice & Patient PWAs (plus the marketing site) driving 4,200+ self-service patient sign-ups across 45 states and 260+ active practice staff.",
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
-      "Applied Lean Startup principles to drive rapid delivery as the sole frontend developer, shaping high-impact technical and business decisions.",
+      "Own technical direction end-to-end as the sole frontend engineer — architecture, release process, and product trade-offs — sustaining high velocity while part-time.",
     ],
   },
   {
@@ -267,9 +267,18 @@ export const roles: Role[] = [
     company: "Consultant / Self-Employed",
     period: "Feb 2019 – Present · Contract · Remote",
     points: [
-      "Hexa Containment — Rails + Angular platform automating $1M+ inventory ops, a $100K+ self-serve portal, a $15K+ loyalty feature, an AWS email parser, and a Next.js B2B marketplace.",
       "Confidential government client — air-gapped, on-prem generative-AI chat platform in Angular (Gemini-style) with real-time streaming, MCP tool integrations, and usage analytics.",
       "Symetra (Fortune 500 insurance) — Figma-style email-template studio with live in-canvas rendering and campaign analytics; owned product, UX, and frontend.",
+    ],
+  },
+  {
+    role: "Lead Full-Stack Engineer · Consultant",
+    company: "Hexa Containment",
+    period: "Apr 2022 – Nov 2025 · Contract · Remote",
+    points: [
+      "Architected a Rails + Angular shipment & order-management platform that automated $1M+ in annual inventory operations.",
+      "Launched a customer self-serve portal replacing manual phone ordering — $100K+ in online transactions — plus a loyalty feature generating $15K+ in repeat business.",
+      "Built an AWS email-parsing pipeline that ingests order emails and auto-generates shipping options, and directed development of a Next.js closed B2B marketplace.",
     ],
   },
   {
@@ -277,9 +286,7 @@ export const roles: Role[] = [
     company: "Otus",
     period: "Sep 2021 – Feb 2022 · Remote",
     points: [
-      "Partnered with the Principal Frontend Engineer on architecture — micro-frontends, refactoring strategy, and testing standards — improving scalability and maintainability.",
-      "Drove scalable, maintainable solutions for authentication / authorization microservices alongside backend leadership.",
-      "Led architectural planning to convert Login, Sign-up, and User-Management modules to micro-frontend patterns.",
+      "Led the migration of Login, Sign-up, and User-Management modules to a micro-frontend architecture, partnering with the Principal Frontend Engineer on refactoring and testing standards.",
     ],
   },
   {
@@ -287,9 +294,7 @@ export const roles: Role[] = [
     company: "Airvel",
     period: "Feb 2019 – Oct 2019 · Remote",
     points: [
-      "Led implementation of the Airvel marketplace and flight-management site for businesses, full-stack in Angular.",
-      "Architected an efficient, scalable API using Apollo Federated GraphQL with the backend team.",
-      "Integrated Stripe for secure Card + ACH payments in the $50K–$150K range.",
+      "Built the Airvel B2B marketplace and flight-management site full-stack — Angular front end, Node.js + Apollo Federation GraphQL API, and Stripe Card + ACH payments ($50K–$150K).",
     ],
   },
   {
@@ -297,8 +302,7 @@ export const roles: Role[] = [
     company: "axialHealthcare",
     period: "Aug 2018 – Jan 2019 · Remote",
     points: [
-      "Built key features for a pharmacist-focused Angular application supporting opioid-addiction management.",
-      "Took the initiative to learn iOS development, proof-of-concepting ideas and expanding the platform's direction.",
+      "Built clinician-facing Angular features supporting opioid-addiction case management.",
     ],
   },
   {
@@ -325,7 +329,7 @@ export const resume = {
   title: "Founding Engineer · Full-Stack Developer",
   location: "Cookeville, TN · Remote",
   summary:
-    "Founding engineer and full-stack developer specializing in Angular, TypeScript, and Rails. Seven years building Sympliact's healthcare platform from an empty repo to production — now driving 4,200+ patient sign-ups across 45 states — alongside consulting across health-tech, government, and B2B SaaS. I care about clean architecture, automated quality gates, and shipping fast without breaking trust.",
+    "Full-stack TypeScript engineer — Angular on the front end, Node and GraphQL on the back, plus Rails where it fits. Seven years building Sympliact's healthcare platform from an empty repo to production — now driving 4,200+ patient sign-ups across 45 states — alongside consulting across health-tech, government, and B2B SaaS. I care about clean architecture, automated quality gates, and shipping fast without breaking trust.",
   education: [
     {
       school: "Tennessee Technological University",
@@ -338,14 +342,14 @@ export const resume = {
 export const skills: string[] = [
   "Angular",
   "TypeScript",
+  "Node.js",
   "RxJS",
   "Next.js",
-  "Rails",
   "GraphQL",
+  "Rails",
   "AWS",
   "PostgreSQL",
-  "CI/CD",
-  "Jest / Cypress",
+  "Playwright",
   "RAG / LLMs",
   "Stripe",
 ];

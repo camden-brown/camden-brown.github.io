@@ -1,54 +1,123 @@
 /* ============================================================
    Camden Brown — terminal portfolio
-   Design tokens + shell chrome. Dark is the default theme;
-   light is applied via html[data-theme="light"].
+   Design tokens + shell chrome.
+
+   Themes are popular terminal/editor color schemes selected via the
+   title-bar picker. Each is a `data-theme` token block; Dracula is the
+   default and lives on :root so the site renders correctly with no JS.
    ============================================================ */
 
-/* ---- Dark theme (default) ---- */
+/* fonts + shared, theme-independent tokens */
 :root {
-  --bg: #0a0c10;
-  --panel: #0f1218;
-  --panelBody: #0f1218;
-  --panelHi: #161a22;
-  --chrome: #12151b;
-  --border: #1c212b;
-  --borderSoft: #171b22;
-  --text: #e6e8ec;
-  --textHi: #f4f6f9;
-  --muted: #9aa1ad;
-  --faint: #5a616e;
-  --accent: #7ee7a8;
-  --accentBorder: #2b6b4d;
-  --amber: #e0a34f;
-  --stripe1: #12151b;
-  --stripe2: #0f1218;
-
   --sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-
   color-scheme: dark;
 }
 
-/* ---- Light theme ---- */
-html[data-theme='light'] {
-  --bg: #efece4;
-  --panel: #ffffff;
-  --panelBody: #faf8f2;
-  --panelHi: #f1eee5;
-  --chrome: #e8e4da;
-  --border: #dcd7cb;
-  --borderSoft: #e7e2d7;
-  --text: #26292f;
-  --textHi: #111318;
-  --muted: #5f6570;
-  --faint: #9a958b;
-  --accent: #1d7f4e;
-  --accentBorder: #a7d8bd;
-  --amber: #b06a1a;
-  --stripe1: #eceae1;
-  --stripe2: #f5f2ea;
+/* ---- Dracula (default) ---- */
+:root,
+html[data-theme='dracula'] {
+  --bg: #1e1f29;
+  --panel: #282a36;
+  --panelBody: #282a36;
+  --panelHi: #343746;
+  --chrome: #21222c;
+  --border: #383a4a;
+  --borderSoft: #2f313d;
+  --text: #f8f8f2;
+  --textHi: #ffffff;
+  --muted: #9ea3c0;
+  --faint: #6272a4;
+  --accent: #bd93f9;
+  --accentBorder: #5a4a82;
+  --amber: #ff79c6;
+  --stripe1: #2b2e3b;
+  --stripe2: #282a36;
+  --selection: rgba(189, 147, 249, 0.3);
+}
 
-  color-scheme: light;
+/* ---- Nord ---- */
+html[data-theme='nord'] {
+  --bg: #242933;
+  --panel: #2e3440;
+  --panelBody: #2e3440;
+  --panelHi: #3b4252;
+  --chrome: #2b3039;
+  --border: #3b4252;
+  --borderSoft: #353b48;
+  --text: #d8dee9;
+  --textHi: #eceff4;
+  --muted: #a7b0c0;
+  --faint: #4c566a;
+  --accent: #88c0d0;
+  --accentBorder: #34606b;
+  --amber: #ebcb8b;
+  --stripe1: #323846;
+  --stripe2: #2e3440;
+  --selection: rgba(136, 192, 208, 0.3);
+}
+
+/* ---- Gruvbox (dark) ---- */
+html[data-theme='gruvbox'] {
+  --bg: #1d2021;
+  --panel: #282828;
+  --panelBody: #282828;
+  --panelHi: #3c3836;
+  --chrome: #232322;
+  --border: #3c3836;
+  --borderSoft: #32302f;
+  --text: #ebdbb2;
+  --textHi: #fbf1c7;
+  --muted: #bdae93;
+  --faint: #928374;
+  --accent: #b8bb26;
+  --accentBorder: #5c5a24;
+  --amber: #fabd2f;
+  --stripe1: #32302f;
+  --stripe2: #282828;
+  --selection: rgba(184, 187, 38, 0.26);
+}
+
+/* ---- Tokyo Night ---- */
+html[data-theme='tokyo-night'] {
+  --bg: #16161e;
+  --panel: #1a1b26;
+  --panelBody: #1a1b26;
+  --panelHi: #292e42;
+  --chrome: #16161e;
+  --border: #292e42;
+  --borderSoft: #20222f;
+  --text: #c0caf5;
+  --textHi: #e7ebff;
+  --muted: #a9b1d6;
+  --faint: #565f89;
+  --accent: #7aa2f7;
+  --accentBorder: #33436e;
+  --amber: #e0af68;
+  --stripe1: #21222f;
+  --stripe2: #1a1b26;
+  --selection: rgba(122, 162, 247, 0.28);
+}
+
+/* ---- Solarized (dark) ---- */
+html[data-theme='solarized'] {
+  --bg: #00212b;
+  --panel: #002b36;
+  --panelBody: #002b36;
+  --panelHi: #073642;
+  --chrome: #00242e;
+  --border: #0a3b47;
+  --borderSoft: #063540;
+  --text: #839496;
+  --textHi: #eee8d5;
+  --muted: #6f868d;
+  --faint: #586e75;
+  --accent: #268bd2;
+  --accentBorder: #1c5a82;
+  --amber: #b58900;
+  --stripe1: #073642;
+  --stripe2: #002b36;
+  --selection: rgba(38, 139, 210, 0.3);
 }
 
 * {
@@ -70,7 +139,7 @@ body {
 }
 
 ::selection {
-  background: rgba(126, 231, 168, 0.28);
+  background: var(--selection);
 }
 
 a {
@@ -130,7 +199,9 @@ a {
 .navlink:hover { color: var(--textHi); }
 .navlink.active { color: var(--accent); }
 
-.theme-toggle {
+/* ---- Theme picker (dropdown) ---- */
+.theme-menu { position: relative; }
+.theme-btn {
   cursor: pointer;
   font: 11px var(--mono);
   color: var(--faint);
@@ -138,8 +209,55 @@ a {
   border: 1px solid var(--border);
   padding: 4px 9px;
   border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
 }
-.theme-toggle:hover { background: var(--panelHi); }
+.theme-btn:hover { background: var(--panelHi); }
+.theme-btn .caret { font-size: 8px; opacity: 0.7; }
+.theme-btn .swatch { background: var(--accent); }
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.theme-list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 30;
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  min-width: 156px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.6);
+}
+.theme-list[hidden] { display: none; }
+.theme-opt {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font: 12px var(--mono);
+  color: var(--muted);
+  padding: 7px 9px;
+  border-radius: 5px;
+  text-align: left;
+}
+.theme-opt:hover { background: var(--panelHi); color: var(--textHi); }
+.theme-opt .theme-opt-name { flex: 1; }
+.theme-opt .check { color: var(--accent); opacity: 0; }
+.theme-opt[aria-checked='true'] .theme-opt-name { color: var(--textHi); }
+.theme-opt[aria-checked='true'] .check { opacity: 1; }
 
 /* ---- Body ---- */
 .body {
@@ -627,5 +745,5 @@ html[data-theme='dark'] .astro-code span {
     border-top: 1px solid var(--border);
   }
   .navlink { padding: 3px 0; }
-  .theme-toggle { margin-left: auto; }
+  .theme-menu { margin-left: auto; }
 }

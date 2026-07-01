@@ -392,6 +392,99 @@ img.shot {
   width: 100%;
 }
 
+.readable { max-width: 820px; }
+
+/* ---- Screenshot gallery + lightbox ---- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.gallery-item {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--borderSoft);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--panelBody);
+  cursor: zoom-in;
+  text-align: left;
+  transition: border-color 0.15s;
+}
+.gallery-item:hover { border-color: var(--accentBorder); }
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.gallery-item:hover img { transform: scale(1.04); }
+.gallery-cap {
+  display: block;
+  font: 11px var(--mono);
+  color: var(--muted);
+  padding: 8px 10px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(3px);
+}
+.lightbox[hidden] { display: none; }
+.lb-img {
+  max-width: 92vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+}
+.lb-cap { font: 12px var(--mono); color: #cfd3da; text-align: center; }
+.lb-close,
+.lb-prev,
+.lb-next {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  line-height: 1;
+}
+.lb-close { top: 18px; right: 22px; font-size: 20px; padding: 6px 11px; }
+.lb-prev,
+.lb-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 34px;
+  padding: 4px 16px;
+}
+.lb-prev { left: 18px; }
+.lb-next { right: 18px; }
+.lb-close:hover,
+.lb-prev:hover,
+.lb-next:hover { background: rgba(255, 255, 255, 0.16); }
+
+@media (max-width: 720px) {
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .lb-prev, .lb-next { font-size: 24px; padding: 4px 10px; }
+}
+@media (max-width: 460px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+
 /* ============================================================
    Article prose (Writing detail)
    ============================================================ */

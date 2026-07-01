@@ -23,6 +23,12 @@ export interface Project {
   shotB: string;
   /** When set, shotA/shotB are real images under /public/<shotDir>/; otherwise they render as captioned placeholders. */
   shotDir?: string;
+  /** Optional product-overview paragraph shown above the case-study columns. */
+  overview?: string;
+  /** Optional technical-highlights bullets (architecture / engineering). */
+  engineering?: string[];
+  /** Optional screenshot gallery (real images under /public/<shotDir>/) with a lightbox. */
+  gallery?: { src: string; caption: string }[];
 }
 
 export const projects: Project[] = [
@@ -65,6 +71,25 @@ export const projects: Project[] = [
     shotA: "practice-scheduling.png",
     shotB: "patient-records.png",
     shotDir: "sympliact",
+    overview:
+      "Sympliact is a healthcare collaboration platform connecting medical practices with their patients. Practices run scheduling, patient management, and multi-channel patient communication from an admin web app; patients manage their own health records, connect to their providers, and message their care team from a companion app. Both are Angular PWAs sharing one Rails + GraphQL backend — built and owned end-to-end as the founding engineer over seven years, from an empty repo to production.",
+    engineering: [
+      "Two Angular PWAs (practice + patient) sharing typed GraphQL models against a Rails API — installable and offline-capable via a service worker.",
+      "NgRx (store + effects) for predictable state across both apps, with Angular Material and a custom design system for the UI.",
+      "Auth0 (Authorization Code + PKCE) authentication shared across the practice and patient experiences.",
+      "Rails + GraphQL backend on PostgreSQL, with Elasticsearch-powered patient search and Sidekiq background jobs.",
+      "A bespoke mocked Playwright acceptance harness — every screen exercises full flows against intercepted GraphQL with a forged Auth0 session, no backend required — behind an ~80% coverage gate.",
+      "CI/CD with semantic-release, Sentry error monitoring, and PostHog product analytics.",
+    ],
+    gallery: [
+      { src: "practice-scheduling.png", caption: "Practice · resource scheduling calendar" },
+      { src: "practice-patients.png", caption: "Practice · patient roster" },
+      { src: "practice-metrics.png", caption: "Practice · billing & metrics" },
+      { src: "patient-records.png", caption: "Patient · health history" },
+      { src: "patient-providers.png", caption: "Patient · provider connections" },
+      { src: "patient-appointments.png", caption: "Patient · upcoming appointments" },
+      { src: "patient-care-threads.png", caption: "Patient · care threads" },
+    ],
   },
   {
     id: "siriusxm",

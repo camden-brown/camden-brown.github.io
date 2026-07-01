@@ -181,9 +181,70 @@ function startFavicon(): void {
   favTimer = window.setInterval(tick, BLINK_MS);
 }
 
+// ---- Screenshot gallery lightbox (case-study pages) ----
+let galleryKeysWired = false;
+
+function wireGallery(): void {
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.gallery-item'));
+  const lb = document.getElementById('lightbox');
+  if (!items.length || !lb) return;
+
+  const img = lb.querySelector<HTMLImageElement>('.lb-img');
+  const cap = lb.querySelector<HTMLElement>('.lb-cap');
+  const prevBtn = lb.querySelector<HTMLElement>('.lb-prev');
+  const nextBtn = lb.querySelector<HTMLElement>('.lb-next');
+  const closeBtn = lb.querySelector<HTMLElement>('.lb-close');
+  if (!img || !cap || !prevBtn || !nextBtn || !closeBtn) return;
+
+  const shots = items.map((el) => ({
+    src: el.dataset.full ?? '',
+    caption: el.dataset.caption ?? ''
+  }));
+  let idx = 0;
+
+  const show = (i: number) => {
+    idx = (i + shots.length) % shots.length;
+    img.src = shots[idx].src;
+    img.alt = shots[idx].caption;
+    cap.textContent = shots[idx].caption;
+  };
+  const open = (i: number) => {
+    show(i);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+  };
+  const close = () => {
+    lb.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  items.forEach((el, i) => (el.onclick = () => open(i)));
+  closeBtn.onclick = close;
+  prevBtn.onclick = (e) => { e.stopPropagation(); show(idx - 1); };
+  nextBtn.onclick = (e) => { e.stopPropagation(); show(idx + 1); };
+  lb.onclick = (e) => { if (e.target === lb) close(); }; // backdrop
+
+  if (!galleryKeysWired) {
+    galleryKeysWired = true;
+    document.addEventListener('keydown', (e) => {
+      const box = document.getElementById('lightbox');
+      if (!box || box.hidden) return;
+      if (e.key === 'Escape') {
+        box.hidden = true;
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowLeft') {
+        box.querySelector<HTMLElement>('.lb-prev')?.click();
+      } else if (e.key === 'ArrowRight') {
+        box.querySelector<HTMLElement>('.lb-next')?.click();
+      }
+    });
+  }
+}
+
 /** Run on initial load and after every View Transition navigation. */
 export function initUI(): void {
   applyTheme();
   wireThemePicker();
   startFavicon();
+  wireGallery();
 }

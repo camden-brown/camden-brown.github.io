@@ -22,8 +22,8 @@ html[data-theme='dracula'] {
   --panelBody: #282a36;
   --panelHi: #343746;
   --chrome: #21222c;
-  --border: #383a4a;
-  --borderSoft: #2f313d;
+  --border: #4a4d63;
+  --borderSoft: #44475a;
   --text: #f8f8f2;
   --textHi: #ffffff;
   --muted: #9ea3c0;
@@ -43,8 +43,8 @@ html[data-theme='nord'] {
   --panelBody: #2e3440;
   --panelHi: #3b4252;
   --chrome: #2b3039;
-  --border: #3b4252;
-  --borderSoft: #353b48;
+  --border: #4c566a;
+  --borderSoft: #434c5e;
   --text: #d8dee9;
   --textHi: #eceff4;
   --muted: #a7b0c0;
@@ -64,8 +64,8 @@ html[data-theme='gruvbox'] {
   --panelBody: #282828;
   --panelHi: #3c3836;
   --chrome: #232322;
-  --border: #3c3836;
-  --borderSoft: #32302f;
+  --border: #665c54;
+  --borderSoft: #504945;
   --text: #ebdbb2;
   --textHi: #fbf1c7;
   --muted: #bdae93;
@@ -85,8 +85,8 @@ html[data-theme='tokyo-night'] {
   --panelBody: #1a1b26;
   --panelHi: #292e42;
   --chrome: #16161e;
-  --border: #292e42;
-  --borderSoft: #20222f;
+  --border: #414868;
+  --borderSoft: #343a5c;
   --text: #c0caf5;
   --textHi: #e7ebff;
   --muted: #a9b1d6;
@@ -106,8 +106,8 @@ html[data-theme='solarized'] {
   --panelBody: #002b36;
   --panelHi: #073642;
   --chrome: #00242e;
-  --border: #0a3b47;
-  --borderSoft: #063540;
+  --border: #17616f;
+  --borderSoft: #0f4c5c;
   --text: #839496;
   --textHi: #eee8d5;
   --muted: #6f868d;

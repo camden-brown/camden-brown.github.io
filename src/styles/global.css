@@ -734,6 +734,47 @@ html[data-theme='dark'] .astro-code span {
 }
 .bullet-mark { color: var(--accent); flex: none; }
 .screens-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 12px; margin-top: 12px; }
+
+/* -- architecture / flow diagram (in place of screenshots) -- */
+.diagram { margin-top: 12px; }
+.diagram-flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+.dnode {
+  flex: 1 1 0;
+  min-width: 140px;
+  background: var(--panelBody);
+  border: 1px solid var(--accentBorder);
+  border-radius: 10px;
+  padding: 14px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dnode-label { font-family: var(--sans); color: var(--textHi); font-size: 13.5px; font-weight: 600; }
+.dnode-sub { color: var(--muted); font-size: 11.5px; line-height: 1.45; }
+.darrow { align-self: center; flex: 0 0 auto; color: var(--accent); font-size: 20px; }
+.diagram-caption { margin-top: 12px; font: 11.5px/1.6 var(--mono); color: var(--faint); }
+
+/* -- confidential (screens omitted) note -- */
+.confid-note {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--panelBody);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 15px 18px;
+  font-family: var(--sans);
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.confid-note .lock { flex: none; font-size: 15px; }
+
+@media (max-width: 560px) {
+  .diagram-flow { flex-direction: column; }
+  .darrow { transform: rotate(90deg); }
+}
 .stack-row { margin-top: 28px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .chips { display: flex; gap: 7px; flex-wrap: wrap; }
 .pager {

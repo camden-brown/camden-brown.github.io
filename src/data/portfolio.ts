@@ -29,6 +29,10 @@ export interface Project {
   engineering?: string[];
   /** Optional screenshot gallery (real images under /public/<shotDir>/) with a lightbox. */
   gallery?: { src: string; caption: string }[];
+  /** Optional architecture/flow diagram, shown in place of screenshots (themed, no image needed). */
+  diagram?: { caption?: string; stages: { label: string; sub?: string }[] };
+  /** Optional note explaining why screenshots are omitted (confidential / NDA work). */
+  confidentialNote?: string;
 }
 
 export const projects: Project[] = [
@@ -123,6 +127,14 @@ export const projects: Project[] = [
     stack: ["Angular", "TypeScript", "Streaming Media", "Jasmine / Karma", "Team Lead"],
     shotA: "player-ui.png",
     shotB: "catalog.png",
+    diagram: {
+      caption: "Led an 8-engineer team; raised coverage 0 → 80% (Jasmine / Karma) and cut sprint bugs ~70% → under 20%.",
+      stages: [
+        { label: "AngularJS player", sub: "legacy web app" },
+        { label: "Angular re-architecture", sub: "modern component SPA" },
+        { label: "Live streaming player", sub: "audio & video at scale" },
+      ],
+    },
   },
   {
     id: "symetra",
@@ -152,6 +164,8 @@ export const projects: Project[] = [
     stack: ["Angular", "TypeScript", "Rails", "Canvas / Editor", "UX Design"],
     shotA: "editor-canvas.png",
     shotB: "campaign-analytics.png",
+    confidentialNote:
+      "Internal platform for a Fortune 500 insurer — interface screenshots omitted for confidentiality.",
   },
   {
     id: "gov-ai",
@@ -181,6 +195,17 @@ export const projects: Project[] = [
     stack: ["Angular", "TypeScript", "SSE / Streaming", "MCP", "On-prem LLMs"],
     shotA: "chat-stream.png",
     shotB: "tool-calls.png",
+    diagram: {
+      caption: "Gemini-style chat streaming from private, on-prem models — no external AI APIs.",
+      stages: [
+        { label: "Angular UI", sub: "Gemini-style chat" },
+        { label: "SSE streaming", sub: "real-time token responses" },
+        { label: "On-prem LLMs", sub: "air-gapped, no external APIs" },
+        { label: "MCP tools", sub: "tool integrations" },
+      ],
+    },
+    confidentialNote:
+      "Built for a government client in an air-gapped environment — interface screenshots omitted for confidentiality.",
   },
   {
     id: "hexa",
@@ -211,6 +236,15 @@ export const projects: Project[] = [
     stack: ["Rails", "Angular", "AWS", "Next.js", "Automation"],
     shotA: "orders-dashboard.png",
     shotB: "self-serve-portal.png",
+    diagram: {
+      caption: "Automated $1M+ in inventory ops and $100K+ in self-serve orders on a Rails + Angular platform.",
+      stages: [
+        { label: "Order emails", sub: "AWS parser ingests & extracts items" },
+        { label: "Rails API", sub: "orders, inventory, fulfillment" },
+        { label: "Angular ops app", sub: "staff workflows" },
+        { label: "Self-serve + marketplace", sub: "customer portal + Next.js B2B" },
+      ],
+    },
   },
   {
     id: "trade-bot",
@@ -240,6 +274,15 @@ export const projects: Project[] = [
     stack: ["Node.js / TypeScript", "Claude API", "RAG", "Schwab API", "Discord"],
     shotA: "discord-command.png",
     shotB: "trade-analysis.png",
+    diagram: {
+      caption: "Natural-language Discord command → retrieval-augmented Claude reasoning → live brokerage data.",
+      stages: [
+        { label: "Discord", sub: "command in, trade ideas out" },
+        { label: "Node.js bot", sub: "orchestration + tool routing" },
+        { label: "Claude + RAG", sub: "reasons over market data & TA" },
+        { label: "Schwab API", sub: "live account & market data" },
+      ],
+    },
   },
 ];
 

@@ -11,6 +11,7 @@ export function getStaticPaths() {
 }
 
 const { project: cp, prev, next } = Astro.props;
+const diagram = cp.diagram;
 ---
 
 <Shell path={`~/projects/${cp.id}`} active="projects" title={`${cp.name} — Camden Brown`} description={cp.thesis}>
@@ -67,41 +68,62 @@ const { project: cp, prev, next } = Astro.props;
     </div>
   </div>
 
-  <div class="section">
-    <div class="label">## SCREENS</div>
-    {
-      cp.gallery && cp.shotDir ? (
-        <div class="gallery">
-          {cp.gallery.map((g, i) => (
-            <button
-              type="button"
-              class="gallery-item"
-              data-full={`/${cp.shotDir}/${g.src}`}
-              data-caption={g.caption}
-              data-index={i}
-              aria-label={`View ${g.caption}`}
-            >
-              <img src={`/${cp.shotDir}/${g.src}`} alt={g.caption} loading="lazy" />
-              <span class="gallery-cap">{g.caption}</span>
-            </button>
-          ))}
-        </div>
-      ) : (
-        <div class="screens-grid">
-          {cp.shotDir ? (
+  {
+    (cp.shotDir || diagram || cp.confidentialNote) && (
+      <div class="section">
+        <div class="label">## {diagram ? "ARCHITECTURE" : "SCREENS"}</div>
+
+        {cp.gallery && cp.shotDir && (
+          <div class="gallery">
+            {cp.gallery.map((g, i) => (
+              <button
+                type="button"
+                class="gallery-item"
+                data-full={`/${cp.shotDir}/${g.src}`}
+                data-caption={g.caption}
+                data-index={i}
+                aria-label={`View ${g.caption}`}
+              >
+                <img src={`/${cp.shotDir}/${g.src}`} alt={g.caption} loading="lazy" />
+                <span class="gallery-cap">{g.caption}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {!cp.gallery && cp.shotDir && (
+          <div class="screens-grid">
             <img class="shot" src={`/${cp.shotDir}/${cp.shotA}`} alt={`${cp.name} screenshot`} loading="lazy" />
-          ) : (
-            <div class="shot">[ {cp.shotA} ]</div>
-          )}
-          {cp.shotDir ? (
             <img class="shot" src={`/${cp.shotDir}/${cp.shotB}`} alt={`${cp.name} screenshot`} loading="lazy" />
-          ) : (
-            <div class="shot">[ {cp.shotB} ]</div>
-          )}
-        </div>
-      )
-    }
-  </div>
+          </div>
+        )}
+
+        {diagram && (
+          <div class="diagram">
+            <div class="diagram-flow">
+              {diagram.stages.map((s, i) => (
+                <Fragment>
+                  <div class="dnode">
+                    <span class="dnode-label">{s.label}</span>
+                    {s.sub && <span class="dnode-sub">{s.sub}</span>}
+                  </div>
+                  {i < diagram.stages.length - 1 && <span class="darrow">&#8594;</span>}
+                </Fragment>
+              ))}
+            </div>
+            {diagram.caption && <div class="diagram-caption">{diagram.caption}</div>}
+          </div>
+        )}
+
+        {cp.confidentialNote && (
+          <div class="confid-note">
+            <span class="lock">&#128274;</span>
+            <span>{cp.confidentialNote}</span>
+          </div>
+        )}
+      </div>
+    )
+  }
 
   {
     cp.engineering && (

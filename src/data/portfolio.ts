@@ -302,10 +302,10 @@ export const roles: Role[] = [
     company: "Sympliact, Inc",
     period: "Feb 2019 – Present · Part-time · Remote",
     points: [
-      "Architected and delivered an end-to-end healthcare platform from greenfield to production, owning all frontend development.",
+      "Architected and delivered a healthcare platform from an empty repo to production, owning the entire frontend.",
       "Built Angular Practice & Patient PWAs (plus the marketing site) driving 4,200+ self-service patient sign-ups across 45 states and 260+ active practice staff.",
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
-      "Own technical direction end-to-end as the sole frontend engineer — architecture, release process, and product trade-offs — sustaining high velocity while part-time.",
+      "Designed a shared NgRx state architecture and offline-capable PWA foundation across both apps — a typed GraphQL client against a Rails API with Auth0 single sign-on.",
     ],
     tech: ["Angular", "TypeScript", "NgRx", "Rails", "GraphQL", "PostgreSQL", "Playwright"],
   },
@@ -335,7 +335,7 @@ export const roles: Role[] = [
     company: "Otus",
     period: "Sep 2021 – Feb 2022 · Remote",
     points: [
-      "Led the migration of Login, Sign-up, and User-Management modules to a micro-frontend architecture, partnering with the Principal Frontend Engineer on refactoring and testing standards.",
+      "Led the migration of Login, Sign-up, and User-Management modules to a micro-frontend architecture for independent deploys and easier scaling.",
     ],
     tech: ["Angular", "Micro-frontends", "TypeScript", "Jest"],
   },
@@ -364,7 +364,7 @@ export const roles: Role[] = [
     points: [
       "Led an 8-engineer team re-architecting the SiriusXM web player (AngularJS → Angular) for live audio & video streaming.",
       "Raised code coverage from 0% to 80% (Jasmine / Karma), cutting sprint bug rates from ~70% to under 20%.",
-      "Applied The Phoenix Project principles to build the org's highest-velocity team; grew from full-stack intern to lead, including a Ruby on Rails e-reader platform.",
+      "Grew from full-stack intern to team lead over three years; earlier shipped a Ruby on Rails e-reader platform.",
     ],
     tech: ["Angular", "TypeScript", "Streaming Media", "Jasmine / Karma", "Rails"],
   },

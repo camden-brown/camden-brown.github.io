@@ -292,6 +292,8 @@ export interface Role {
   company: string;
   period: string;
   points: string[];
+  /** Key technologies used in this role, shown as a per-job tech line. */
+  tech?: string[];
 }
 
 export const roles: Role[] = [
@@ -305,6 +307,7 @@ export const roles: Role[] = [
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
       "Own technical direction end-to-end as the sole frontend engineer — architecture, release process, and product trade-offs — sustaining high velocity while part-time.",
     ],
+    tech: ["Angular", "TypeScript", "NgRx", "Rails", "GraphQL", "PostgreSQL", "Playwright"],
   },
   {
     role: "Senior Full-Stack Engineer",
@@ -314,6 +317,7 @@ export const roles: Role[] = [
       "Confidential government client — air-gapped, on-prem generative-AI chat platform in Angular (Gemini-style) with real-time streaming, MCP tool integrations, and usage analytics.",
       "Symetra (Fortune 500 insurance) — Figma-style email-template studio with live in-canvas rendering and campaign analytics; owned product, UX, and frontend.",
     ],
+    tech: ["Angular", "TypeScript", "Rails", "SSE Streaming", "MCP"],
   },
   {
     role: "Lead Full-Stack Engineer · Consultant",
@@ -324,6 +328,7 @@ export const roles: Role[] = [
       "Launched a customer self-serve portal replacing manual phone ordering — $100K+ in online transactions — plus a loyalty feature generating $15K+ in repeat business.",
       "Built an AWS email-parsing pipeline that ingests order emails and auto-generates shipping options, and directed development of a Next.js closed B2B marketplace.",
     ],
+    tech: ["Rails", "Angular", "Next.js", "AWS", "PostgreSQL"],
   },
   {
     role: "Senior Full-Stack Engineer",
@@ -332,6 +337,7 @@ export const roles: Role[] = [
     points: [
       "Led the migration of Login, Sign-up, and User-Management modules to a micro-frontend architecture, partnering with the Principal Frontend Engineer on refactoring and testing standards.",
     ],
+    tech: ["Angular", "Micro-frontends", "TypeScript", "Jest"],
   },
   {
     role: "Lead Software Engineer",
@@ -340,6 +346,7 @@ export const roles: Role[] = [
     points: [
       "Built the Airvel B2B marketplace and flight-management site full-stack — Angular front end, Node.js + Apollo Federation GraphQL API, and Stripe Card + ACH payments ($50K–$150K).",
     ],
+    tech: ["Angular", "Node.js", "Apollo GraphQL", "Stripe", "GCP"],
   },
   {
     role: "Front End Developer",
@@ -348,6 +355,7 @@ export const roles: Role[] = [
     points: [
       "Built clinician-facing Angular features supporting opioid-addiction case management.",
     ],
+    tech: ["Angular", "TypeScript", "RxJS"],
   },
   {
     role: "Lead Frontend Engineer",
@@ -358,6 +366,7 @@ export const roles: Role[] = [
       "Raised code coverage from 0% to 80% (Jasmine / Karma), cutting sprint bug rates from ~70% to under 20%.",
       "Applied The Phoenix Project principles to build the org's highest-velocity team; grew from full-stack intern to lead, including a Ruby on Rails e-reader platform.",
     ],
+    tech: ["Angular", "TypeScript", "Streaming Media", "Jasmine / Karma", "Rails"],
   },
 ];
 

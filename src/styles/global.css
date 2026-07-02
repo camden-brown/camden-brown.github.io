@@ -1003,6 +1003,7 @@ html[data-theme='dark'] .astro-code span {
 }
 .rz-points li { margin: 4px 0; }
 .rz-points li::marker { color: var(--accent); }
+.rz-tech { margin-top: 9px; font: 11.5px var(--mono); color: var(--faint); letter-spacing: 0.2px; }
 
 .rz-skills { display: flex; gap: 7px; flex-wrap: wrap; }
 .rz-skill {
@@ -1080,6 +1081,7 @@ html[data-theme='dark'] .astro-code span {
   .rz-role-period { color: #555 !important; font-family: inherit; font-size: 9pt; }
   .rz-points { color: #222 !important; font-family: inherit; font-size: 10pt; line-height: 1.45; }
   .rz-points li::marker { color: #111; }
+  .rz-tech { color: #555 !important; font-family: inherit; font-size: 8.5pt; margin-top: 5px; }
 
   .rz-skills { gap: 5px; }
   .rz-skill {

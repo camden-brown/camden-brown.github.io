@@ -53,7 +53,7 @@ export const projects: Project[] = [
     built: [
       "Practice PWA — appointment scheduling (FullCalendar), patient management, provider & staff administration, configurable automated notifications, and usage metrics.",
       "Patient PWA — multi-profile health records, provider connections & authorizations, secure care-thread messaging, and record search with predictive suggestions.",
-      "NgRx state architecture and Angular Material across both apps, delivered as offline-capable PWAs with Auth0 auth against a Rails + GraphQL API (Postgres, Elasticsearch, Sidekiq).",
+      "NgRx state architecture and Angular Material across both PWAs, with Auth0 auth against a Rails + GraphQL API (Postgres, Elasticsearch, Sidekiq).",
       "Quality gates built on unit and Playwright integration tests, with automated QA running the same Playwright suite in two modes — mocked (intercepted GraphQL, forged Auth0 session, no backend) for fast PR checks, and live against a real backend for full end-to-end verification.",
     ],
     metrics: [
@@ -79,7 +79,7 @@ export const projects: Project[] = [
     overview:
       "Sympliact is a healthcare collaboration platform connecting medical practices with their patients. Practices run scheduling, patient management, and multi-channel patient communication from an admin web app; patients manage their own health records, connect to their providers, and message their care team from a companion app. Both are Angular PWAs sharing one Rails + GraphQL backend — built and owned end-to-end as the founding engineer over seven years, from an empty repo to production.",
     engineering: [
-      "Two Angular PWAs (practice + patient) sharing typed GraphQL models against a Rails API — installable and offline-capable via a service worker.",
+      "Two Angular PWAs (practice + patient) sharing typed GraphQL models against a shared Rails API.",
       "NgRx (store + effects) for predictable state across both apps, with Angular Material and a custom design system for the UI.",
       "Auth0 (Authorization Code + PKCE) authentication shared across the practice and patient experiences.",
       "Rails + GraphQL backend on PostgreSQL, with Elasticsearch-powered patient search and Sidekiq background jobs.",
@@ -305,7 +305,7 @@ export const roles: Role[] = [
       "Architected and delivered a healthcare platform from an empty repo to production, owning the entire frontend.",
       "Built Angular Practice & Patient PWAs (plus the marketing site) driving 4,200+ self-service patient sign-ups across 45 states and 260+ active practice staff.",
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
-      "Designed a shared NgRx state architecture and offline-capable PWA foundation across both apps — a typed GraphQL client against a Rails API with Auth0 single sign-on.",
+      "Designed the shared NgRx state architecture powering both PWAs — a typed GraphQL client against a Rails API with Auth0 single sign-on.",
     ],
     tech: ["Angular", "TypeScript", "NgRx", "Rails", "GraphQL", "PostgreSQL", "Playwright"],
   },

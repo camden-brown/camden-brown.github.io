@@ -15,9 +15,13 @@ const contacts = [
 <Shell path="~/resume" active="resume" title="Résumé — Camden Brown">
   <div class="resume-bar no-print">
     <Prompt cmd="./resume --export pdf" />
-    <button id="print-resume" type="button" class="btn btn--accent print-btn">
+    <a
+      href="/resume.pdf"
+      download="Camden-Brown-Resume.pdf"
+      class="btn btn--accent print-btn"
+    >
       &#8595; Download PDF
-    </button>
+    </a>
   </div>
 
   <article class="resume" id="resume-doc">

@@ -1,0 +1,77 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+
+const links = [
+  { href: '/', label: 'home', note: '· back to the top' },
+  { href: '/projects/', label: 'projects', note: '· selected work' },
+  { href: '/resume/', label: 'resume', note: '· experience & skills' },
+  { href: '/contact/', label: 'contact', note: '· say hello' },
+];
+---
+
+<Shell path="~/404" active="home" title="404 — Camden Brown">
+  <Prompt cmd="cat $REQUESTED_PATH" />
+  <div class="nf-code">404</div>
+  <div class="nf-msg">
+    <span class="nf-err">zsh:</span> no such file or directory:
+    <span class="nf-path" id="nf-path">{Astro.url.pathname}</span>
+  </div>
+  <p class="nf-sub">
+    That page moved, never existed, or you out-typed the filesystem. Here’s where
+    everything actually lives:
+  </p>
+
+  <div class="contact-rows nf-rows">
+    {
+      links.map((l) => (
+        <a href={l.href} class="prow contact-row">
+          <span>
+            <span class="contact-arrow">→</span>
+            <span class="contact-label"> {l.label}</span>
+            <span class="contact-note"> {l.note}</span>
+          </span>
+          <span class="contact-right">{l.href}</span>
+        </a>
+      ))
+    }
+  </div>
+
+  <div class="cursor-line"><span class="blink">&#9611;</span></div>
+
+  {/* Static 404.html bakes in "/404" — show the URL the visitor actually hit. */}
+  <script is:inline>
+    (function () {
+      var el = document.getElementById('nf-path');
+      if (el && location.pathname && location.pathname !== '/404/') {
+        el.textContent = location.pathname + location.search;
+      }
+    })();
+  </script>
+</Shell>
+
+<style>
+  .nf-code {
+    font-family: var(--mono);
+    font-size: clamp(64px, 14vw, 120px);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    margin: 8px 0 12px;
+    letter-spacing: -2px;
+  }
+  .nf-msg {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .nf-err { color: var(--amber); }
+  .nf-path { color: var(--text); }
+  .nf-sub {
+    color: var(--muted);
+    max-width: 52ch;
+    margin-bottom: 22px;
+  }
+  .nf-rows { max-width: 520px; }
+</style>

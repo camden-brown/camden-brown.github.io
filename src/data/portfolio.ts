@@ -86,6 +86,7 @@ export const projects: Project[] = [
       "Testing strategy combining unit tests with Playwright integration tests across both apps, driving strong coverage of the feature surface.",
       "Automated QA on a dual-mode Playwright harness: the same specs run mocked — intercepted GraphQL plus a forged Auth0 session, no backend required — as fast PR gates, and live against a real backend for end-to-end release verification.",
       "CI/CD with semantic-release, Sentry error monitoring, and PostHog product analytics.",
+      "Reliability under real load: near-zero major downtime and zero unhandled fatal errors across both apps over the last quarter (monitored in Sentry) — all sustained by a solo, part-time maintainer.",
     ],
     gallery: [
       { src: "practice-dashboard.png", caption: "Practice · scheduling board + live notifications" },
@@ -306,6 +307,7 @@ export const roles: Role[] = [
       "Built Angular Practice & Patient PWAs (plus the marketing site) driving 4,200+ self-service patient sign-ups across 45 states and 260+ active practice staff.",
       "Established CI/CD and quality gates on unit and Playwright integration tests — with automated QA running the Playwright suite both mocked (no backend) and live — for a safe, low-regression release cadence.",
       "Designed the shared NgRx state architecture powering both PWAs — a typed GraphQL client against a Rails API with Auth0 single sign-on.",
+      "Keep the platform reliably online under real patient and practice load — near-zero major downtime and zero unhandled fatal errors across both apps last quarter (Sentry) — run solo and part-time.",
     ],
     tech: ["Angular", "TypeScript", "NgRx", "Rails", "GraphQL", "PostgreSQL", "Playwright"],
   },

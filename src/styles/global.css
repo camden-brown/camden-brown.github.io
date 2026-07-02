@@ -1048,6 +1048,10 @@ html[data-theme='dark'] .astro-code span {
   .body { padding: 0 !important; background: #fff !important; color: #111 !important; }
 
   .resume {
+    /* Single accent color drives name, headers, keylines, bullets.
+       Swap these two values to re-tone the whole PDF. */
+    --rz-accent: #2f6f6a;
+    --rz-accent-soft: #bcd7d4;
     margin: 0;
     padding: 0;
     border: 0 !important;
@@ -1057,8 +1061,17 @@ html[data-theme='dark'] .astro-code span {
     color: #111 !important;
   }
 
-  .rz-head { border-bottom: 1.5px solid #222; padding-bottom: 12px; }
-  .rz-name { color: #111 !important; font-family: inherit; font-size: 24pt; letter-spacing: -0.5px; }
+  .rz-head {
+    border-bottom: 2px solid var(--rz-accent);
+    padding-bottom: 12px;
+  }
+  .rz-name {
+    color: var(--rz-accent) !important;
+    font-family: inherit;
+    font-size: 25pt;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
   .rz-title { color: #333 !important; font-size: 11pt; margin-top: 5px; }
   .rz-contact { color: #444 !important; font-family: inherit; font-size: 9pt; line-height: 1.6; }
   .rz-contact a { color: #111 !important; text-decoration: none; }
@@ -1066,27 +1079,35 @@ html[data-theme='dark'] .astro-code span {
   .rz-section { margin-top: 16px; }
   .rz-h2 {
     font-family: inherit;
-    color: #111 !important;
+    color: var(--rz-accent) !important;
     font-size: 10.5pt;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #bbb;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rz-accent-soft);
     padding-bottom: 3px;
     margin-bottom: 9px;
   }
   .rz-summary { color: #222 !important; font-family: inherit; font-size: 10pt; line-height: 1.5; }
 
-  .rz-role { margin-bottom: 12px; break-inside: avoid; }
-  .rz-role-title { color: #111 !important; font-family: inherit; font-size: 11pt; }
-  .rz-role-co { color: #333 !important; }
+  .rz-role {
+    margin-bottom: 12px;
+    break-inside: avoid;
+    border-left: 2px solid var(--rz-accent-soft);
+    padding-left: 11px;
+  }
+  .rz-role-title { color: #111 !important; font-family: inherit; font-size: 11pt; font-weight: 700; }
+  .rz-role-co { color: var(--rz-accent) !important; font-weight: 600; }
   .rz-role-period { color: #555 !important; font-family: inherit; font-size: 9pt; }
   .rz-points { color: #222 !important; font-family: inherit; font-size: 10pt; line-height: 1.45; }
-  .rz-points li::marker { color: #111; }
+  .rz-points li::marker { color: var(--rz-accent); }
   .rz-tech { color: #555 !important; font-family: inherit; font-size: 8.5pt; margin-top: 5px; }
 
   .rz-skills { gap: 5px; }
   .rz-skill {
-    border: 1px solid #bbb;
-    color: #222 !important;
+    border: 1px solid var(--rz-accent-soft);
+    background: #f1f8f7;
+    color: #223 !important;
     font-family: inherit;
     font-size: 9pt;
     padding: 2px 8px;

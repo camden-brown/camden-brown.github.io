@@ -547,6 +547,31 @@ img.shot {
 }
 .prose pre code { font-family: var(--mono); }
 
+/* Mermaid diagrams: sit in a themed card; before JS renders, the raw source
+   is hidden so there's no flash of graph text. Scrolls horizontally on narrow
+   screens instead of overflowing the page. */
+.prose pre.mermaid {
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--panel);
+  padding: 18px 16px;
+  margin: 0 0 1.4em;
+  text-align: center;
+  overflow-x: auto;
+  color: transparent; /* hide raw source until rendered */
+  line-height: normal;
+}
+.prose pre.mermaid[data-processed] { color: inherit; }
+.prose pre.mermaid svg { max-width: 100%; height: auto; }
+.mermaid-caption {
+  display: block;
+  margin: -0.9em 0 1.6em;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+  text-align: center;
+}
+
 /* Shiki dual-theme: default inline styles use the light theme;
    swap to the dark theme's colors when the dark theme is active. */
 html[data-theme='dark'] .astro-code,
@@ -820,6 +845,19 @@ html[data-theme='dark'] .astro-code span {
 .writing-row { display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 22px 16px; }
 .wr-date { color: var(--faint); font-size: 12px; }
 .wr-title { font-family: var(--sans); font-size: 19px; font-weight: 600; color: var(--textHi); }
+.wr-cat {
+  margin-left: 9px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--accent);
+  border: 1px solid var(--accentBorder);
+  border-radius: 5px;
+  padding: 1px 7px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
 .wr-desc { font-family: var(--sans); color: var(--muted); font-size: 13.5px; margin-top: 5px; line-height: 1.6; }
 .wr-read { margin-top: 9px; font-size: 11px; color: var(--accent); }
 

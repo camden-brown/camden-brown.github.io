@@ -10,6 +10,8 @@ const writing = defineCollection({
     categories: z.array(z.string()).default([]),
     // short summary shown in the Writing list; falls back to an excerpt if absent
     description: z.string().optional(),
+    // draft: true → visible in `npm run dev`, excluded from production builds
+    draft: z.boolean().default(false),
   }),
 });
 

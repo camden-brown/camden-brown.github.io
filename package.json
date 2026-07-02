@@ -11,7 +11,9 @@
     "resume:pdf": "node scripts/build-resume-pdf.mjs"
   },
   "dependencies": {
-    "astro": "^5.13.0"
+    "astro": "^5.13.0",
+    "mermaid": "^11.16.0",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

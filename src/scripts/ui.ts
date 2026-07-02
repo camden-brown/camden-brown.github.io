@@ -241,10 +241,49 @@ function wireGallery(): void {
   }
 }
 
+/** Lazily render any Mermaid diagrams, themed from the active terminal palette.
+ *  Mermaid (~500KB) is only fetched on pages that actually contain a diagram. */
+async function wireMermaid(): Promise<void> {
+  const nodes = document.querySelectorAll<HTMLElement>('pre.mermaid:not([data-processed])');
+  if (nodes.length === 0) return;
+
+  const cs = getComputedStyle(document.documentElement);
+  const v = (name: string, fallback: string) => cs.getPropertyValue(name).trim() || fallback;
+
+  const { default: mermaid } = await import('mermaid');
+  mermaid.initialize({
+    startOnLoad: false,
+    securityLevel: 'strict',
+    theme: 'base',
+    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+    themeVariables: {
+      background: v('--panel', '#282a36'),
+      primaryColor: v('--panelHi', '#343746'),
+      primaryTextColor: v('--text', '#f8f8f2'),
+      primaryBorderColor: v('--accent', '#bd93f9'),
+      secondaryColor: v('--bg', '#1e1f29'),
+      tertiaryColor: v('--bg', '#1e1f29'),
+      lineColor: v('--faint', '#6272a4'),
+      textColor: v('--text', '#f8f8f2'),
+      nodeBorder: v('--accent', '#bd93f9'),
+      mainBkg: v('--panelHi', '#343746'),
+      clusterBkg: v('--bg', '#1e1f29'),
+      clusterBorder: v('--border', '#4a4d63'),
+      edgeLabelBackground: v('--panel', '#282a36'),
+    },
+  });
+  try {
+    await mermaid.run({ nodes: Array.from(nodes) });
+  } catch {
+    /* leave the raw source visible if a diagram fails to parse */
+  }
+}
+
 /** Run on initial load and after every View Transition navigation. */
 export function initUI(): void {
   applyTheme();
   wireThemePicker();
   startFavicon();
   wireGallery();
+  void wireMermaid();
 }

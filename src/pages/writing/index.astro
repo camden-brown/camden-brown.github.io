@@ -8,10 +8,10 @@ const posts = await getSortedPosts();
 
 <Shell path="~/writing" active="writing" title="Writing — Camden Brown">
   <Prompt cmd="cat ./writing/*" />
-  <div class="page-title">What I’m learning</div>
+  <div class="page-title">Writing &amp; deep-dives</div>
   <div class="page-intro">
-    Notes from the work — Go fundamentals, full-stack monorepos, editor internals, and staying sharp
-    across a long-running founding-engineer role.
+    How I think about building software — system-design deep-dives, architecture
+    tradeoffs, and notes from the work across a long-running founding-engineer role.
   </div>
 
   <div class="rows--writing">
@@ -20,7 +20,10 @@ const posts = await getSortedPosts();
         <a class="wrow writing-row" href={`/writing/${p.id}/`}>
           <span class="wr-date">{fmtDate(p.data.date)}</span>
           <div>
-            <div class="wr-title">{p.data.title}</div>
+            <div class="wr-title">
+              {p.data.title}
+              {p.data.categories[0] && <span class="wr-cat">{p.data.categories[0]}</span>}
+            </div>
             <div class="wr-desc">{p.data.description}</div>
             <div class="wr-read">read →</div>
           </div>

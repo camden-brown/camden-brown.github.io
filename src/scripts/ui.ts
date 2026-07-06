@@ -241,41 +241,58 @@ function wireGallery(): void {
   }
 }
 
+let mermaidCounter = 0;
+let mermaidBusy = false;
+
 /** Lazily render any Mermaid diagrams, themed from the active terminal palette.
- *  Mermaid (~500KB) is only fetched on pages that actually contain a diagram. */
+ *  Mermaid (~500KB) is only fetched on pages that actually contain a diagram.
+ *  Each diagram is rendered individually via mermaid.render() with a unique id —
+ *  mermaid.run({nodes}) can misplace SVGs when a page has several diagrams. */
 async function wireMermaid(): Promise<void> {
   const nodes = document.querySelectorAll<HTMLElement>('pre.mermaid:not([data-processed])');
-  if (nodes.length === 0) return;
+  if (nodes.length === 0 || mermaidBusy) return;
+  mermaidBusy = true;
 
   const cs = getComputedStyle(document.documentElement);
   const v = (name: string, fallback: string) => cs.getPropertyValue(name).trim() || fallback;
 
-  const { default: mermaid } = await import('mermaid');
-  mermaid.initialize({
-    startOnLoad: false,
-    securityLevel: 'strict',
-    theme: 'base',
-    fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-    themeVariables: {
-      background: v('--panel', '#282a36'),
-      primaryColor: v('--panelHi', '#343746'),
-      primaryTextColor: v('--text', '#f8f8f2'),
-      primaryBorderColor: v('--accent', '#bd93f9'),
-      secondaryColor: v('--bg', '#1e1f29'),
-      tertiaryColor: v('--bg', '#1e1f29'),
-      lineColor: v('--faint', '#6272a4'),
-      textColor: v('--text', '#f8f8f2'),
-      nodeBorder: v('--accent', '#bd93f9'),
-      mainBkg: v('--panelHi', '#343746'),
-      clusterBkg: v('--bg', '#1e1f29'),
-      clusterBorder: v('--border', '#4a4d63'),
-      edgeLabelBackground: v('--panel', '#282a36'),
-    },
-  });
   try {
-    await mermaid.run({ nodes: Array.from(nodes) });
-  } catch {
-    /* leave the raw source visible if a diagram fails to parse */
+    const { default: mermaid } = await import('mermaid');
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: 'strict',
+      theme: 'base',
+      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+      themeVariables: {
+        background: v('--panel', '#282a36'),
+        primaryColor: v('--panelHi', '#343746'),
+        primaryTextColor: v('--text', '#f8f8f2'),
+        primaryBorderColor: v('--accent', '#bd93f9'),
+        secondaryColor: v('--bg', '#1e1f29'),
+        tertiaryColor: v('--bg', '#1e1f29'),
+        lineColor: v('--faint', '#6272a4'),
+        textColor: v('--text', '#f8f8f2'),
+        nodeBorder: v('--accent', '#bd93f9'),
+        mainBkg: v('--panelHi', '#343746'),
+        clusterBkg: v('--bg', '#1e1f29'),
+        clusterBorder: v('--border', '#4a4d63'),
+        edgeLabelBackground: v('--panel', '#282a36'),
+      },
+    });
+
+    for (const el of Array.from(nodes)) {
+      const code = (el.textContent ?? '').trim();
+      if (!code) continue;
+      try {
+        const { svg } = await mermaid.render(`mmd-${++mermaidCounter}`, code);
+        el.innerHTML = svg;
+        el.setAttribute('data-processed', 'true');
+      } catch {
+        /* leave the raw source visible if a single diagram fails to parse */
+      }
+    }
+  } finally {
+    mermaidBusy = false;
   }
 }
 

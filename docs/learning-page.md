@@ -29,7 +29,7 @@ only coupling.
 A brief summary:
 
 1. A one-line intro.
-2. **Palanaeum:** what it is and why Camden is building it (learning and
+2. **Palanaeum:** the Palanaeum logo (stepped tower, in the theme accent), what it is and why Camden is building it (learning and
    interview prep), the stack, and nine design-mockup screenshots
    (`public/palanaeum/`, rendered from the design canvas: learning, practice
    and interview screens, placeholder company names) in the same gallery +

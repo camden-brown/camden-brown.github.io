@@ -1,0 +1,65 @@
+---
+/**
+ * Palanaeum's animated logo: a highstorm passes the tower and infuses its
+ * spheres, then the windows stay lit. Plays once when the page loads and
+ * replays on hover (after the run ends). Reduced motion shows the lit tower.
+ * Art and CSS are copied from the Palanaeum repo (tools/brand/highstorm.py).
+ */
+import art from './highstorm.svg?raw';
+import './highstorm.css';
+
+interface Props {
+  size?: number;
+}
+const { size = 34 } = Astro.props;
+const SECONDS = 9.0;
+---
+
+<span
+  class="pal-highstorm"
+  style={`width:${size}px;height:${size}px`}
+  data-seconds={SECONDS}
+  aria-hidden="true"
+>
+  <span class="pal-highstorm-art" set:html={art.replace(/__ID__/g, 'hs0-0')} />
+</span>
+<template id="pal-highstorm-art" set:html={art}></template>
+
+<style is:global>
+  .pal-highstorm {
+    /* the tower is the theme accent, muted so the lit windows stand out */
+    --pal-storm-sky: var(--chrome);
+    --pal-storm-tower: color-mix(in srgb, var(--accent) 62%, var(--bg));
+    display: inline-block;
+    flex: none;
+    border-radius: 6px;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .pal-highstorm-art,
+  .pal-highstorm-art > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script>
+  // Hover replays the storm once the current run has finished. New ids per run
+  // keep the SVG's filters and masks from clashing.
+  let runs = 0;
+  function wire() {
+    const art = document.querySelector<HTMLTemplateElement>('#pal-highstorm-art')?.innerHTML ?? '';
+    document.querySelectorAll<HTMLElement>('.pal-highstorm').forEach((el) => {
+      const ms = Number(el.dataset.seconds ?? 9) * 1000;
+      let playingUntil = Date.now() + ms;
+      el.onmouseenter = () => {
+        if (Date.now() < playingUntil) return;
+        playingUntil = Date.now() + ms;
+        const target = el.querySelector('.pal-highstorm-art');
+        if (target) target.innerHTML = art.replace(/__ID__/g, `hs-r${++runs}`);
+      };
+    });
+  }
+  document.addEventListener('astro:page-load', wire);
+</script>

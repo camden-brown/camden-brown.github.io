@@ -29,7 +29,7 @@ only coupling.
 A brief summary:
 
 1. A one-line intro.
-2. **Palanaeum:** the Palanaeum logo (stepped tower, in the theme accent), what it is and why Camden is building it (learning and
+2. **Palanaeum:** the animated Palanaeum logo (`src/components/palanaeum/Highstorm.astro`: a highstorm passes, then the windows light; plays on load, replays on hover, still for reduced motion; art copied from Palanaeum's `tools/brand/highstorm.py` output, recopy when it changes), what it is and why Camden is building it (learning and
    interview prep), the stack, and nine design-mockup screenshots
    (`public/palanaeum/`, rendered from the design canvas: learning, practice
    and interview screens, placeholder company names) in the same gallery +

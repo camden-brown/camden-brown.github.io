@@ -1165,7 +1165,6 @@ html[data-theme='dark'] .astro-code span {
   white-space: nowrap;
 }
 .learn-lab-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
-.learn-lab-logo { color: var(--accent); flex: none; }
 .learn-lab-name { font-family: var(--sans); color: var(--textHi); font-size: 22px; font-weight: 600; letter-spacing: -0.4px; }
 .learn-copy { font-family: var(--sans); color: var(--muted); font-size: 14px; line-height: 1.7; margin: 12px 0 0; max-width: 760px; }
 .learn-gallery { margin-top: 22px; }

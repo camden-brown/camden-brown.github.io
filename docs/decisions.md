@@ -10,6 +10,33 @@ kept here.
 
 ---
 
+## 2026-10-11 · Learning page goes in the nav; writing is hidden
+
+**Decision:** `/learning` is built (step one of the Palanaeum project) and
+takes the writing tab's place in the nav, after projects. The writing nav
+item is commented out in `Shell.astro`; `/writing/` and its posts still build
+and the home page still lists them.
+
+The page opens with a short section on Palanaeum: what it is, why Camden is
+building it (learning new topics and prepping for interviews), the stack, and
+nine mockup screenshots in the same gallery as the project pages. The topics
+section is a "coming soon" placeholder (a fake `palanaeum sync` terminal)
+until Palanaeum exports real topics; it renders the list automatically once
+`topics` isn't empty. Concept statuses are optional in `learning.json` and
+hidden until Palanaeum exports real ones. "Right now" items, a "how I
+practise" section and the behavioral topic were cut, and `now` was dropped
+from `learning.json`. Copy is plain and first-person.
+
+**Why:** The learning page is the first visible piece of the project, and the
+writing section isn't where Camden wants visitors to go right now. Camden
+doesn't have real progress data yet, so the page shows the tool and the plan
+rather than made-up statuses.
+
+**Supersedes:** the "right now" and "how I practise" parts of "Public
+learning page is informational, not a dashboard" below.
+
+---
+
 ## 2026-10-11 · Learning lab docs live in Palanaeum
 
 **Decision:** The lab's design docs (`docs/learning-lab/`) and its decisions

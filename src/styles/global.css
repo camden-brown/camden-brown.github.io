@@ -1155,6 +1155,114 @@ html[data-theme='dark'] .astro-code span {
   a { color: #111 !important; }
 }
 
+/* -- learning page -- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.learn-lab-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.learn-lab-name { font-family: var(--sans); color: var(--textHi); font-size: 22px; font-weight: 600; letter-spacing: -0.4px; }
+.learn-copy { font-family: var(--sans); color: var(--muted); font-size: 14px; line-height: 1.7; margin: 12px 0 0; max-width: 760px; }
+.learn-gallery { margin-top: 22px; }
+.learn-fine { color: var(--faint); font-size: 11.5px; margin: 10px 0 0; }
+.learn-fine-inline { color: var(--faint); font-size: 11.5px; margin-left: 8px; }
+.learn-section { margin-top: 38px; }
+.learn-note { font-family: var(--sans); color: var(--muted); font-size: 13px; margin: 14px 0 0; }
+
+.learn-topics-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.learn-legend {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.learn-sync {
+  margin-top: 16px;
+  max-width: 760px;
+  border: 1px solid var(--borderSoft);
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--chrome);
+}
+.learn-sync-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--borderSoft);
+  background: var(--panelHi);
+}
+.learn-sync-bar .dot { width: 9px; height: 9px; }
+.learn-sync-title { margin-left: 8px; color: var(--faint); font-size: 11px; }
+.learn-sync-body { padding: 14px 16px 16px; font-size: 12.5px; }
+.learn-sync-line { color: var(--muted); }
+.learn-sync-progress {
+  position: relative;
+  height: 6px;
+  margin: 14px 0 12px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--panelHi);
+}
+/* an indeterminate bar: a short segment that keeps sweeping across */
+.learn-sync-progress span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 30%;
+  border-radius: 3px;
+  background: var(--accent);
+  animation: learn-sweep 2.4s ease-in-out infinite;
+}
+@keyframes learn-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(340%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .learn-sync-progress span { animation: none; transform: none; }
+}
+.learn-sync-msg { font-family: var(--sans); color: var(--text); font-size: 14px; line-height: 1.7; }
+.learn-topic { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--borderSoft); }
+.learn-topic-name { font-family: var(--sans); color: var(--textHi); font-size: 18px; font-weight: 600; }
+.learn-topic-why { font-family: var(--sans); color: var(--muted); font-size: 13px; margin-top: 2px; }
+.learn-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.learn-concept {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.learn-icon { color: var(--accent); font-size: 11px; }
+/* comfortable: filled; studying: accent outline; up next: dashed and quieter */
+.learn-concept.is-comfortable { background: var(--panelHi); border-color: var(--accentBorder); }
+.learn-concept.is-studying { border-color: var(--accent); }
+.learn-concept.is-next { border-style: dashed; color: var(--muted); }
+.learn-concept.is-next .learn-icon,
+.learn-legend-item.is-next .learn-icon { color: var(--faint); }
+
 /* ---- Responsive ---- */
 @media (max-width: 720px) {
   body { padding: 14px 10px 40px; }

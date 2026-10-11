@@ -1,0 +1,172 @@
+---
+import Shell from '../layouts/Shell.astro';
+import Prompt from '../components/Prompt.astro';
+import { learning, hasStatuses, statuses, statusMeta, fmtUpdated } from '../lib/learning';
+
+const shots = [
+  { src: '/palanaeum/topic.png', caption: 'A topic, broken into subtopics and concepts' },
+  { src: '/palanaeum/new-topic.png', caption: 'Adding a topic: Claude drafts the lessons, I review them' },
+  { src: '/palanaeum/lesson.png', caption: 'A lesson, with a chat on the side for questions' },
+  { src: '/palanaeum/drill.png', caption: 'Drilling a concept out loud at the whiteboard' },
+  { src: '/palanaeum/coding.png', caption: 'Coding practice: talking through it, no test runner' },
+  { src: '/palanaeum/interview.png', caption: 'A mock backend interview' },
+  { src: '/palanaeum/debrief.png', caption: 'Feedback after the interview' },
+  { src: '/palanaeum/applications.png', caption: 'The jobs I have applied to, and where each one stands' },
+  { src: '/palanaeum/job.png', caption: 'Prep for one job, round by round' },
+];
+---
+
+<Shell
+  path="~/learning"
+  active="learning"
+  title="Learning — Camden Brown"
+  description="What Camden Brown is studying, and Palanaeum, the app they are building to learn and prep for interviews."
+>
+  <Prompt cmd="cat learning.md" />
+  <div class="page-title">What I'm learning</div>
+  <div class="page-intro">
+    What I'm studying, and the app I'm building to help me study it.
+  </div>
+
+  <section class="learn-section">
+    <div class="label">## WHAT I'M BUILDING</div>
+    <div class="learn-lab-head">
+      <div class="learn-lab-name">Palanaeum</div>
+      <span class="chip">in progress</span>
+    </div>
+    <p class="learn-copy">
+      Palanaeum is the app I'm building to learn new things and get ready for interviews. Reading
+      docs and watching talks only gets me so far. What sticks is having to explain something out
+      loud and getting pushed on the parts I gloss over.
+    </p>
+    <p class="learn-copy">
+      I give it a topic and whatever links or videos I've found, and Claude writes the lessons. Once
+      I've read one, I get drilled on it by voice while I sketch on a whiteboard. For interviews, I
+      track the jobs I've applied to and practise each round before the real one: recruiter call,
+      system design, coding.
+    </p>
+    <p class="learn-copy">
+      The feedback matters most to me. It should tell me what I missed, not that I did great.
+    </p>
+    <div class="chips mt-12">
+      {['Angular', 'NestJS', 'TypeORM', 'Postgres', 'Claude API', 'Nx'].map((s) => <span class="chip">{s}</span>)}
+    </div>
+
+    <div class="gallery learn-gallery">
+      {
+        shots.map((g, i) => (
+          <button
+            type="button"
+            class="gallery-item"
+            data-full={g.src}
+            data-caption={g.caption}
+            data-index={i}
+            aria-label={`View ${g.caption}`}
+          >
+            <img src={g.src} alt={g.caption} loading="lazy" />
+            <span class="gallery-cap">{g.caption}</span>
+          </button>
+        ))
+      }
+    </div>
+    <p class="learn-fine">These are design mockups. I'm building the real thing now.</p>
+  </section>
+
+  <section class="learn-section" id="topics">
+    <div class="learn-topics-head">
+      <div class="label">## TOPICS</div>
+      {
+        hasStatuses && (
+          <ul class="learn-legend" aria-label="Legend">
+            {statuses.map((s) => (
+              <li class:list={['learn-legend-item', `is-${s.id}`]}>
+                <span class="learn-icon" aria-hidden="true">{s.icon}</span> {s.label}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+    {
+      learning.topics.length === 0 && (
+        <div class="learn-sync" role="status">
+          <div class="learn-sync-bar">
+            <span class="dot dot-r" />
+            <span class="dot dot-y" />
+            <span class="dot dot-g" />
+            <span class="learn-sync-title">palanaeum — sync</span>
+          </div>
+          <div class="learn-sync-body">
+            <div class="prompt">
+              <span class="user">camden@portfolio</span> ~ % <span class="cmd">palanaeum sync --to ./learning.json</span>
+            </div>
+            <div class="learn-sync-line">→ looking for palanaeum… found it, still being built</div>
+            <div class="learn-sync-line">→ topics: 0 · concepts: 0 · last sync: never</div>
+            <div class="learn-sync-progress" aria-hidden="true"><span /></div>
+            <div class="learn-sync-msg">
+              Coming soon. Once Palanaeum is up and running, the topics I'm studying and how far
+              along I am with each one will sync here.
+            </div>
+            <div class="prompt mt-12">
+              <span class="user">camden@portfolio</span> ~ % <span class="blink">&#9611;</span>
+            </div>
+          </div>
+        </div>
+      )
+    }
+    {
+      learning.topics.length > 0 && (
+        <p class="learn-copy">
+          Synced from Palanaeum.
+          <span class="learn-fine-inline">updated {fmtUpdated(learning.updatedAt)}</span>
+        </p>
+      )
+    }
+    {
+      learning.topics.map((t) => (
+        <div class="learn-topic">
+          <div class="learn-topic-name">{t.name}</div>
+          <div class="learn-topic-why">{t.why}</div>
+          <ul class="learn-concepts">
+            {t.concepts.map((c) => (
+              <li class:list={['learn-concept', c.status && `is-${c.status}`]}>
+                {c.status && (
+                  <>
+                    <span class="learn-icon" aria-hidden="true">{statusMeta[c.status].icon}</span>
+                    {c.name}
+                    <span class="sr-only">({statusMeta[c.status].label})</span>
+                  </>
+                )}
+                {!c.status && c.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  {
+    learning.writeups.length > 0 && (
+      <section class="learn-section">
+        <div class="label">## WRITTEN UP</div>
+        <p class="learn-note">When a concept clicks, I try to write it up as a deep-dive.</p>
+        <div class="rows--tail">
+          {learning.writeups.map((w) => (
+            <a class="lrow" href={w.href}>
+              {w.title} →
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lb-close" type="button" aria-label="Close">&#10005;</button>
+    <button class="lb-prev" type="button" aria-label="Previous">&#8249;</button>
+    <img class="lb-img" alt="" />
+    <button class="lb-next" type="button" aria-label="Next">&#8250;</button>
+    <div class="lb-cap"></div>
+  </div>
+</Shell>

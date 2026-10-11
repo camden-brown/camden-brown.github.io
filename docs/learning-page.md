@@ -1,6 +1,12 @@
 # The `/learning` page
 
-**Status:** Draft (designed, not built). See [decisions.md](decisions.md).
+**Status:** Built 2026-10-11. `topics` is empty until Palanaeum exports real
+data, so the page shows a "coming soon" placeholder there. See [decisions.md](decisions.md).
+
+- Page: [`src/pages/learning.astro`](../src/pages/learning.astro)
+- Data: [`src/data/learning.json`](../src/data/learning.json), validated at
+  build time by the zod schema in [`src/lib/learning.ts`](../src/lib/learning.ts)
+  (a file that doesn't match fails the build). The "Written up" section is hidden while `writeups` is empty.
 
 A read-only page on the site showing what Camden is learning and practising.
 The learning tool itself is a separate app,
@@ -20,10 +26,23 @@ only coupling.
 
 ## What the page shows
 
-Informational, not a dashboard: what Camden is learning and why, up to three
-"right now" focus items, how they practise, topics with concepts marked
-comfortable / studying / up next, and links to write-ups. No scores, streaks,
-charts or job applications. Mockup: the "What I'm learning" board on the
+A brief summary:
+
+1. A one-line intro.
+2. **Palanaeum:** what it is and why Camden is building it (learning and
+   interview prep), the stack, and nine design-mockup screenshots
+   (`public/palanaeum/`, rendered from the design canvas: learning, practice
+   and interview screens, placeholder company names) in the same gallery +
+   lightbox as the project pages. Copy is plain and in Camden's voice.
+3. **Topics:** while `topics` is empty, a "coming soon" placeholder styled as
+   a terminal running `palanaeum sync` (0 topics, last sync never, a sweeping
+   progress bar that stops under reduced motion). Once topics exist, each
+   technical topic with its concepts, marked comfortable / studying / up next
+   when statuses exist (legend and icons hidden while none do).
+4. Links to write-ups (hidden while there are none).
+
+No "right now" items, scores, streaks, charts or real job applications.
+Mockup: the "What I'm learning" board on the
 design canvas (https://claude.ai/artifact/F9a5hgsL3DgyrfyJNqs8dV).
 
 The page uses the site's theme variables like every other page
@@ -37,14 +56,12 @@ site work has it; if they differ, Palanaeum wins.
 The public page is informational, not a dashboard, so the export carries
 **statuses and short text, no scores or streaks**. The lab derives each
 concept's status from its mastery (≥65 comfortable, 40–64 studying, below 40
-or not started up next); "Right now" items are written or picked by Camden.
+or not started up next). Only technical topics are exported (no behavioral). `status` is optional: the page hides statuses until
+any concept has one.
 
 ```jsonc
 {
   "updatedAt": "2026-10-08",
-  "now": [
-    { "topic": "Backend fundamentals", "title": "Transactions & isolation levels", "note": "What goes wrong at each level; write skew with a real example." }
-  ],
   "topics": [
     {
       "name": "System design",

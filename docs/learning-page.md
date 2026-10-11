@@ -8,7 +8,7 @@ data, so the page shows a "coming soon" placeholder there. See [decisions.md](de
   build time by the zod schema in [`src/lib/learning.ts`](../src/lib/learning.ts)
   (a file that doesn't match fails the build). The "Written up" section is hidden while `writeups` is empty.
 
-A read-only page on the site showing what Camden is learning and practising.
+A read-only page on the site showing what Camden is learning and practicing.
 The learning tool itself is a separate app,
 [Palanaeum](https://github.com/camden-brown/Palanaeum) (`~/Workspace/Palanaeum`);
 it is **not** built in this repo.

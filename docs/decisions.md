@@ -24,7 +24,7 @@ section is a "coming soon" placeholder (a fake `palanaeum sync` terminal)
 until Palanaeum exports real topics; it renders the list automatically once
 `topics` isn't empty. Concept statuses are optional in `learning.json` and
 hidden until Palanaeum exports real ones. "Right now" items, a "how I
-practise" section and the behavioral topic were cut, and `now` was dropped
+practice" section and the behavioral topic were cut, and `now` was dropped
 from `learning.json`. Copy is plain and first-person.
 
 **Why:** The learning page is the first visible piece of the project, and the
@@ -32,7 +32,7 @@ writing section isn't where Camden wants visitors to go right now. Camden
 doesn't have real progress data yet, so the page shows the tool and the plan
 rather than made-up statuses.
 
-**Supersedes:** the "right now" and "how I practise" parts of "Public
+**Supersedes:** the "right now" and "how I practice" parts of "Public
 learning page is informational, not a dashboard" below.
 
 ---
@@ -56,7 +56,7 @@ repo" below; the repo is `Palanaeum`.
 
 **Decision:** The public `/learning` page drops metrics: no scores, streaks,
 charts, heatmap or mastery bars. It shows what Camden is learning and why,
-three "right now" focus items, how they practise (learn → explain out loud
+three "right now" focus items, how they practice (learn → explain out loud
 at a whiteboard → weekly mock interview), topics with concepts marked
 comfortable / studying / up next, and links to write-ups. `learning.json`
 is simplified to match (statuses and text only).
